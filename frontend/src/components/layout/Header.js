@@ -1,14 +1,15 @@
 import React from 'react';
 import AppBar from '@mui/material/AppBar';
-import {Typography,Toolbar} from '@mui/material';
+import { Typography, Toolbar } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
 
 const drawerWidth = 240;
-function Header(props){
-    return(
-      <AppBar
+
+function Header(props) {
+  return (
+    <AppBar
       position="fixed"
       sx={{
         width: { sm: `calc(100% - ${drawerWidth}px)` },
@@ -20,7 +21,7 @@ function Header(props){
           color="inherit"
           aria-label="open drawer"
           edge="start"
-         // onClick={handleDrawerToggle}
+          onClick={props.onClick}
           sx={{ mr: 2, display: { sm: 'none' } }}
         >
           <MenuIcon />
@@ -30,7 +31,7 @@ function Header(props){
         </Typography>
       </Toolbar>
     </AppBar>
-    )
+  )
 }
 
 export default Header;

@@ -15,9 +15,9 @@ export const SidebarDatas = [
         Link : "/"
     },
     {
-        title: "Add Product",
+        title: "Create Account",
         icon :<AddBox/> ,
-        Link : "/admin/addproduct" 
+        Link : "/createaccount" 
     },
     {
         title: "Manage Product",
