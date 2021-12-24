@@ -1,31 +1,159 @@
 import React from 'react';
-import { Typography,Toolbar } from '@mui/material';
+import { Typography, Toolbar, Grid, TextField, InputLabel, Button } from '@mui/material';
 
 
 
 
 function CreateAccount() {
-
+    
     return (
-        <div>
+        <Grid>
             <Toolbar />
-            <Typography paragraph>
+            <Typography
+                variant="h6"
+                style={{ background: "#81d4fa", padding: "10px" }}
+            >
                 CreateAccount
             </Typography>
-            <Typography paragraph>
-                Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-                eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-                neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-                tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-                sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-                tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-                gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-                et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-                tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-                eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-                posuere sollicitudin aliquam ultrices sagittis orci a.
-            </Typography>
-        </div>
+            <form>
+                <div style={{ width: "40%", paddingTop: "10px" }}>
+                    <InputLabel>
+                        First Name
+                    </InputLabel>
+                    <TextField
+                        fullWidth
+                        placeholder="First Name"
+                        id="outlined-size-small"
+                        defaultValue=""
+                        size="small"
+                    />
+                </div>
+                <div style={{ width: "40%" }}>
+                    <InputLabel>
+                        Last Name
+                    </InputLabel>
+                    <TextField
+                        fullWidth
+                        placeholder="Last Name"
+                        id="outlined-size-small"
+                        defaultValue=""
+                        size="small"
+                    />
+                </div>
+                <div>
+                    <InputLabel>
+                        Full Name
+                    </InputLabel>
+                    <TextField
+                        fullWidth
+                        placeholder="Full Name"
+                        id="outlined-size-small"
+                        defaultValue=""
+                        size="small"
+                    />
+                </div>
+                <div>
+                    <InputLabel>
+                        Email
+                    </InputLabel>
+                    <TextField
+                        fullWidth
+                        placeholder="Email"
+                        id="outlined-size-small"
+                        defaultValue=""
+                        size="small"
+                    />
+                </div>
+                <div>
+                    <InputLabel>
+                        Address
+                    </InputLabel>
+                    <TextField
+                        fullWidth
+                        placeholder="Address"
+                        id="outlined-size-small"
+                        defaultValue=""
+                        size="small"
+                    />
+                </div>
+                <div>
+                    <InputLabel>
+                        Mobile No
+                    </InputLabel>
+                    <TextField
+                        type="number"
+                        fullWidth
+                        placeholder=" Mobile No"
+                        id="outlined-size-small"
+                        defaultValue=""
+                        size="small"
+                    />
+                </div>
+                <div>
+                    <InputLabel>
+                        Date of Birth
+                    </InputLabel>
+                    <TextField
+                        type="date"
+                        size="small"
+                    />
+                </div>
+                <div>
+                    <InputLabel>
+                        Primary Amount
+                    </InputLabel>
+                    <TextField
+                        type="number"
+                        fullWidth
+                        placeholder=" Primary Amount"
+                        id="outlined-size-small"
+                        defaultValue=""
+                        size="small"
+                    />
+                </div>
+                <div>
+                    <InputLabel>
+                        Account Holder's Picture
+                    </InputLabel>
+                    <TextField
+                        type="file"
+                        id="outlined-size-small"
+                        size="small"
+                    />
+                </div>
+                <div>
+                    <InputLabel>
+                        Signature Verification Image
+                    </InputLabel>
+                    <TextField
+                        type="file"
+                        id="outlined-size-small"
+                        size="small"
+                    />
+                </div>
+                <div>
+                    <InputLabel>
+                        Nominee Name
+                    </InputLabel>
+                    <TextField
+                        fullWidth
+                        placeholder="Nominee Name"
+                        id="outlined-size-small"
+                        defaultValue=""
+                        size="small"
+                    />
+                    <InputLabel>
+                        Nominee's Picture
+                    </InputLabel>
+                    <TextField
+                        type="file"
+                        id="outlined-size-small"
+                        size="small"
+                    />
+                </div>
+                <Button variant="contained">Submit</Button>
+            </form>
+        </Grid>
     )
 }
 
