@@ -5,7 +5,6 @@ const initialstate = {
     loading:true
 }
 
-
 const accountHolders = (state=initialstate,action)=>{
     switch(action.type){
         case ALL_ACCOUNT_HOLDERS:

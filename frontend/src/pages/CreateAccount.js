@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Toolbar, Grid, TextField, InputLabel, Button } from '@mui/material';
+import { Typography,Paper,Toolbar,Grid,TextField,InputLabel,Button } from '@mui/material';
 
 
 
@@ -15,13 +15,13 @@ function CreateAccount() {
             >
                 CreateAccount
             </Typography>
+            <Paper style={{padding:"15px"}}>
             <form>
                 <div style={{ width: "40%", paddingTop: "10px" }}>
                     <InputLabel>
                         First Name
                     </InputLabel>
                     <TextField
-                        fullWidth
                         placeholder="First Name"
                         id="outlined-size-small"
                         defaultValue=""
@@ -33,7 +33,6 @@ function CreateAccount() {
                         Last Name
                     </InputLabel>
                     <TextField
-                        fullWidth
                         placeholder="Last Name"
                         id="outlined-size-small"
                         defaultValue=""
@@ -153,6 +152,7 @@ function CreateAccount() {
                 </div>
                 <Button variant="contained">Submit</Button>
             </form>
+            </Paper>
         </Grid>
     )
 }
