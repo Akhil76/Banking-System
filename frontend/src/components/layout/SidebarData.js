@@ -25,12 +25,7 @@ export const SidebarDatas = [
         Link : "/transaction"
     },
     {
-        title: "Add category",
-        icon :<AddBox/> ,
-        Link : "/admin/addcategory"    
-    },
-    {
-        title: "Manage Category",
+        title: "Account Manager",
         icon :<CategoryIcon/> ,
         Link : "/admin/managecat"    
     },

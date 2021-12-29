@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 function Transaction() {
     const classes = useStyles();
     return (
-        <Grid direction="row" justifyContent="flex-start" container>
+        <Grid container>
             <Toolbar/>
             <Grid style={{ background: "#81d4fa" }} item xs={12} sm={12} md={12}>
                 <Toolbar>
@@ -32,7 +32,7 @@ function Transaction() {
                     />
                 </Toolbar>
             </Grid>
-            <TransactionButton title="Deposite" />
+            <TransactionButton title="Deposits" />
             <TransactionButton title="Withdraw" />
             <TransactionButton title="Transfer" />
         </Grid>

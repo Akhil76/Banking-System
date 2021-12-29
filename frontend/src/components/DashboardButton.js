@@ -10,7 +10,8 @@ const useStyles = makeStyles({
     },
     paper: {
         background: "#bbdefb",
-        padding: "60px",
+        height:"150px",
+        padding: "20px 30px",
         margin: "10px"
     },
     link:{
@@ -21,11 +22,11 @@ const useStyles = makeStyles({
 function DashboardButton(props) {
     const classes = useStyles();
     return (
-        <Grid item xs={12} sm={6} md={4}>
-            <NavLink className={classes.link}to="#">
+        <Grid item xs={12} sm={6} md={3}>
+            <NavLink className={classes.link}to={""+props.link}>
                 <Paper className={classes.paper} button>
                     <Typography variant="h6">{props.title}</Typography>
-                    <Typography>{props.amount} Tk</Typography>
+                    <Typography>{props.amount}</Typography>
                 </Paper>
             </NavLink>
         </Grid>

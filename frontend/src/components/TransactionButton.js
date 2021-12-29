@@ -23,7 +23,7 @@ function TransactionButton(props) {
     return (
         <Grid item xs={12} sm={6} md={4}>
             <NavLink className={classes.link}to="#">
-                <Paper className={classes.paper} button>
+                <Paper className={classes.paper}>
                     <Typography variant="h6">{props.title}</Typography>
                 </Paper>
             </NavLink>

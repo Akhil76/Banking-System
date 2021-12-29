@@ -50,7 +50,7 @@ function Sidebar(props) {
         ))}
       </List>
       <Divider />
-      <List>
+      {/* <List>
         {['All mail', 'Trash', 'Spam'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
@@ -59,7 +59,7 @@ function Sidebar(props) {
             <ListItemText primary={text} />
           </ListItem>
         ))}
-      </List> 
+      </List>  */}
     </div>
   );
 
