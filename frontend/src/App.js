@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Router from './routers/router';
 import Header from './components/layout/Header';
 import Sidebar from './components/layout/Sidebar';
-import { BrowserRouter } from 'react-router-dom';
+
 
 const drawerWidth = 240;
 
@@ -20,7 +20,7 @@ function App() {
     setOpen(false);
   };
   return (
-    <BrowserRouter>
+   
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <Header
@@ -38,7 +38,7 @@ function App() {
           <Router/>
         </Box>
       </Box>
-    </BrowserRouter>
+    
   );
 }
 

@@ -30,10 +30,7 @@ const accountHolderSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    PrimaryAmount:{
-        type:Number,
-        required:true
-    },
+    
     Picture:{
         type:String
     },
@@ -45,8 +42,18 @@ const accountHolderSchema = new mongoose.Schema({
     },
     NomineePicture:{
         type:String
+    },
+    MainBalance:{
+        type:Number,
+        required:true
+    },
+    Transaction:[
+       {
+        type:Schema.Types.ObjectId,
+        ref:'transaction'
     }
-
+    
+    ]
 });
 
 

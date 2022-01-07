@@ -10,7 +10,8 @@ const useStyles = makeStyles({
     },
     paper: {
         background: "#bbdefb",
-        padding: "100px",
+        height:"150px",
+        padding: "50px 30px",
         margin: "10px"
     },
     link:{
@@ -21,14 +22,16 @@ const useStyles = makeStyles({
 function TransactionButton(props) {
     const classes = useStyles();
     return (
-        <Grid item xs={12} sm={6} md={4}>
-            <NavLink className={classes.link}to="#">
-                <Paper className={classes.paper}>
+        <Grid item xs={12} sm={6} md={3}>
+            <NavLink className={classes.link}to={""+props.link}>
+                <Paper className={classes.paper} button>
                     <Typography variant="h6">{props.title}</Typography>
                 </Paper>
             </NavLink>
         </Grid>
     )
 }
+
+
 
 export default TransactionButton;

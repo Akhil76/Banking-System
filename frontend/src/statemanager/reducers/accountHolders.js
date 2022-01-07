@@ -16,7 +16,6 @@ const accountHolders = (state=initialstate,action)=>{
         default :
             return state
 
-
     }
 }
 

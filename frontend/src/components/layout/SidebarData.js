@@ -27,7 +27,7 @@ export const SidebarDatas = [
     {
         title: "Account Manager",
         icon :<CategoryIcon/> ,
-        Link : "/admin/managecat"    
+        Link : "/accountmanager"    
     },
     {
         title: "Settings",

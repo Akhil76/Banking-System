@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
-import { Typography, Grid, Toolbar, Box } from '@mui/material';
-import CircularProgress from '@mui/material/CircularProgress';
+import { Typography, Grid, Toolbar } from '@mui/material';
+import Spinner from '../components/Spinner';
 import DashboardButton from '../components/DashboardButton';
-import TotalDeposit from '../components/TotalDeposit';
-import TotalWithdraw from '../components/TotalWithdraw';
-import TotalTransfer from '../components/TotalTransfer';
 import { useDispatch, useSelector } from 'react-redux';
 import { allAccountHolders } from '../statemanager/actions/accountHoders';
-import { Routes, Route } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+
+
 
 function Home() {
     const dispatch = useDispatch();
@@ -17,37 +16,25 @@ function Home() {
     useEffect(() => {
         dispatch(allAccountHolders());
     }, []);
+
     return (
         <div>
             <Toolbar />
             {
                 loading ?
-                    <Box style={{
-                        display: "block",
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                        width: "5%",
-                        marginTop: "300px"
-                    }}>
-                        <CircularProgress />
-                    </Box>
+                    <Spinner />
                     :
 
                     <div>
                         <Grid container>
-                            <DashboardButton title="Today's Deposits" amount="50000" link="/"/>
+                            <DashboardButton title="Today's Deposits" amount="50000" link="/" />
                             <DashboardButton title="Today's Withdraw" amount="50000" link="totalwithdraw" />
                             <DashboardButton title="Today's Transfer" amount="50000" link="totaltransfer" />
-                            <DashboardButton title="Account Holders"/>
+                            <DashboardButton title="Account Holders" link="accountholders"/>
                         </Grid>
-                        <Grid container>
-                            <Routes>
-                                <Route path="/" element={<TotalDeposit/>} />
-                                <Route path="totalwithdraw" element={<TotalWithdraw/>} />
-                                <Route path="totaltransfer" element={<TotalTransfer/>} />
-                            </Routes>
+                        <Grid container> 
+                            <Outlet /> {/*---Router---*/}
                         </Grid>
-
                         <Grid item xs={12} sm={6} md={4}>
                             {
                                 accountHolders.map((acholder) => (
@@ -63,8 +50,6 @@ function Home() {
         </div>
     )
 }
-
-
 
 
 export default Home;

@@ -7,7 +7,7 @@ export const allAccountHolders = () =>(dispatch)=>{
     .then(Response =>{
         dispatch({
             type:ALL_ACCOUNT_HOLDERS,
-            payload: {
+            payload:{
                 accountHolders:Response.data
             }
         })
@@ -17,3 +17,4 @@ export const allAccountHolders = () =>(dispatch)=>{
     })
 
 }
+

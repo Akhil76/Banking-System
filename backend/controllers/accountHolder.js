@@ -1,5 +1,6 @@
 const asynchandler = require('express-async-handler');
 const accountHolderModel = require('../models/accountHolder');
+const transactionModel = require('../models/transaction');
 
 //----------Create Account--------------------------
 const createAccount = asynchandler(async(req,res)=>{
@@ -27,24 +28,40 @@ const createAccount = asynchandler(async(req,res)=>{
             Address,
             Mobile,
             Birthdate,
-            PrimaryAmount,
+            MainBalance:PrimaryAmount,
             Picture,
             Signature,
             Nominee,
             NomineePicture
         });
         const createdAccountData = await newAccount.save();
-        res.status(200).json({
-            result: createdAccountData,
-            message:"Account is created successfully."
+       
+        const FirstTransaction = await new transactionModel({
+            AccountHolderId:createdAccountData._id,
+            Deposit:createdAccountData.MainBalance,
         });
 
+        const TransactionData = await FirstTransaction.save();
+        const pushdata = await accountHolderModel.updateOne(
+            {_id:TransactionData.AccountHolderId},
+            {
+                $push:{Transaction:TransactionData._id}
+            }
+            );
+            
+        res.status(200).json({
+            result: createdAccountData,
+            transaction:TransactionData,
+            push:pushdata,
+            message:"Account is created successfully."
+        });
     }catch(error){
         res.status(500).json({
             error:"Server side error occurred and account is not created!"
         })
     }
 });
+
 //--------------------------------------------------
 const allaccountholders = asynchandler(async(req,res)=>{
     try{
