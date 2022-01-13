@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Toolbar, Grid } from '@mui/material';
+import {Typography,TextField,Grid,Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 
@@ -17,6 +17,22 @@ function Deposit() {
         <div>
             <Grid container>
                 <Typography>Deposit</Typography>
+                <Grid item xs={12} sm={12} md={12}>
+                    <form>
+                        <div>
+                            <TextField
+                            fullwidth
+                            placeholder="amount"
+                            //value="amount"
+                            size="small"
+                            />
+                        </div>
+                        <Button 
+                        type="submit" 
+                        variant="contained" 
+                        color="primary">Deposit</Button>
+                    </form>
+                </Grid>
             </Grid>
         </div>
     )

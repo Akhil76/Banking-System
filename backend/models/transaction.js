@@ -22,6 +22,13 @@ const transactionSchema = new mongoose.Schema({
     },
     Charge:{
         type:Number
+    },
+    Balance:{
+        type:Number
+    },
+    Date:{
+        type:Date,
+        default:new Date()
     }
     
 });

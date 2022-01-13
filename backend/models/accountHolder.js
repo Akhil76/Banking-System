@@ -47,6 +47,10 @@ const accountHolderSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
+    Date:{
+        type:Date,
+        default:new Date()
+    },
     Transaction:[
        {
         type:Schema.Types.ObjectId,

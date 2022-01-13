@@ -39,6 +39,7 @@ const createAccount = asynchandler(async(req,res)=>{
         const FirstTransaction = await new transactionModel({
             AccountHolderId:createdAccountData._id,
             Deposit:createdAccountData.MainBalance,
+            Balance:createdAccountData.MainBalance
         });
 
         const TransactionData = await FirstTransaction.save();

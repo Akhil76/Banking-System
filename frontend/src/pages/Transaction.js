@@ -1,5 +1,6 @@
 import React from 'react';
-import { Typography, Toolbar, Grid, TextField } from '@mui/material';
+import { Typography, Toolbar, Grid } from '@mui/material';
+import SearchAccount from '../components/SearchAccount';
 import TransactionButton from '../components/TransactionButton';
 import { makeStyles } from '@mui/styles';
 import { Outlet } from 'react-router-dom';
@@ -7,6 +8,11 @@ import { Outlet } from 'react-router-dom';
 const useStyles = makeStyles({
     root: {
 
+    },
+    bar:{
+        display:"flex", 
+        flexWrap: "wrap",
+        justifyContent: "space-between",
     }
 
 });
@@ -19,15 +25,9 @@ function Transaction() {
             <Toolbar />
             <Grid container>
                 <Grid style={{ background: "#81d4fa" }} item xs={12} sm={12} md={12}>
-                    <Toolbar>
+                    <Toolbar className={classes.bar}>
                         <Typography variant="h6">Transactions</Typography>
-                        <TextField
-                            style={{ marginLeft: "auto", background: "white", borderRadius: "5px" }}
-                            placeholder="Account No"
-                            id="outlined-size-small"
-                            defaultValue=""
-                            size="small"
-                        />
+                        <SearchAccount/>
                     </Toolbar>
                 </Grid>
             </Grid>
