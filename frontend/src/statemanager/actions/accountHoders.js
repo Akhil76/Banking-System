@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ALL_ACCOUNT_HOLDERS } from '../actionTypes/actionTypes';
+import { ALL_ACCOUNT_HOLDERS, SINGLE_ACCOUNT } from '../actionTypes/actionTypes';
 
 
 export const allAccountHolders = () =>(dispatch)=>{
@@ -17,4 +17,21 @@ export const allAccountHolders = () =>(dispatch)=>{
     })
 
 }
+
+export const singleAccount = (id) =>(dispatch)=>{
+    axios.get(`/singleaccountholder/${id}`)
+    .then(Response =>{
+        dispatch({
+            type:SINGLE_ACCOUNT,
+            payload:{
+                accountHolders:Response.data
+            }
+        })
+    })
+    .catch(error=>{
+        console.log(error)
+    })
+
+}
+
 

@@ -1,19 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const {allaccountholders,createAccount} = require('../controllers/accountHolder');
-const {deposit} = require('../controllers/transaction');
+const {allaccountholders,createAccount,singleAccountholder} = require('../controllers/accountHolder');
+const {transaction} = require('../controllers/transaction');
 
 
 router.get("/allaccountholders",allaccountholders);
+router.get("/singleaccountholder/:id",singleAccountholder);
 router.post("/createaccount",createAccount);
-router.post("/deposit",deposit);
-
-
-
-
-
-
-
+router.post("/transaction",transaction);
 
 
 

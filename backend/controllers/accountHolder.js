@@ -76,5 +76,17 @@ const allaccountholders = asynchandler(async(req,res)=>{
     }
 });
 
+const singleAccountholder = asynchandler(async(req,res)=>{
+    try{
+        const Id = req.params.id;
+        const data = await accountHolderModel.findById(Id);
+        res.status(200).json(data);
 
-module.exports = {allaccountholders,createAccount};
+    }catch(error){
+        res.status(500).json({
+            error:"Server side error occurred!"
+        })
+    }
+});
+
+module.exports = {allaccountholders,createAccount,singleAccountholder};

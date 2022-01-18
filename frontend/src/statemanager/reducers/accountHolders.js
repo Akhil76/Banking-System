@@ -1,7 +1,8 @@
-import {ALL_ACCOUNT_HOLDERS} from '../actionTypes/actionTypes';
+import {ALL_ACCOUNT_HOLDERS, SINGLE_ACCOUNT} from '../actionTypes/actionTypes';
 
 const initialstate = {
     items:[],
+    accountHolder:{},// Single accountholder only
     loading:true
 }
 
@@ -11,6 +12,12 @@ const accountHolders = (state=initialstate,action)=>{
             return{
                 ...state,
                 items:action.payload.accountHolders,
+                loading:false
+            }
+        case SINGLE_ACCOUNT:
+            return{
+                ...state,
+                accountHolder:action.payload.accountHolders,
                 loading:false
             }
         default :

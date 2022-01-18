@@ -30,7 +30,11 @@ const accountHolderSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    
+    AccountType:{
+        type:String,
+        enum:["Saving","Current"],
+        default:"Saving"
+    },
     Picture:{
         type:String
     },
@@ -50,6 +54,11 @@ const accountHolderSchema = new mongoose.Schema({
     Date:{
         type:Date,
         default:new Date()
+    },
+
+    AccountNo:{
+        type:Number,
+        default:0
     },
     Transaction:[
        {

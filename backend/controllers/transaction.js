@@ -4,35 +4,48 @@ const accountHolderModel = require('../models/accountHolder');
 
 
 
-const deposit = asynchandler(async(req,res)=>{
+const transaction = asynchandler(async(req,res)=>{
 
     try{
-        const {AccountHolderId,Deposit} = req.body;
+        const AccountHolderId = req.body.id;
+        const {TransactionType,Deposit,Withdraw,Transfer,TransferingAccountNo} = req.body;
         
         const AcHolder = await accountHolderModel.findById({_id:AccountHolderId});
-        const PreviousBalance = AcHolder.MainBalance;
-        const TotalBalance = PreviousBalance+Number(Deposit); // Number() is use to convert string into number
-        console.log(TotalBalance);
-        const deposit = await new transactionModel({
+        var PreviousBalance = AcHolder.MainBalance;
+        var TotalBalance="";
+        if(TransactionType=="Deposit"){
+            TotalBalance = PreviousBalance+Number(Deposit); // Number() is use to convert string into number
+        }else if(TransactionType=="Withdraw"){
+            TotalBalance = PreviousBalance-Number(Withdraw);
+        }else if(TransactionType=="Transfer"){
+            TotalBalance = PreviousBalance-Number(Transfer);
+        }
+       
+        const transaction = await new transactionModel({
             AccountHolderId,
+            TransactionType,
             Deposit,
+            Withdraw,
+            Transfer,
+            TransferingAccountNo,
             Balance:TotalBalance
         });
-        const depositData = await deposit.save();
+
+        const transactionData = await transaction.save();
         const UpdateBalance = await accountHolderModel.findByIdAndUpdate(
-            {_id:depositData.AccountHolderId},
-            {MainBalance:depositData.Balance},
+            {_id:transactionData.AccountHolderId},
+            {MainBalance:transactionData.Balance},
             {new:true}
         );
         const pushObjId = await accountHolderModel.findOneAndUpdate(
-            {_id:depositData.AccountHolderId},
+            {_id:transactionData.AccountHolderId},
             {
-                $push:{Transaction:depositData._id}
+                $push:{Transaction:transactionData._id}
             }
         );
         res.status(200).json({
-            result:depositData,
-            message:"Deposited successfully.",
+            result:transactionData,
+            message:"transaction is successful."
         });
     }catch(error){
         res.status(500).json({
@@ -41,4 +54,4 @@ const deposit = asynchandler(async(req,res)=>{
     }
 });
 
-module.exports = {deposit};
+module.exports = {transaction};
