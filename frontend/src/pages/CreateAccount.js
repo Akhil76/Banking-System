@@ -1,13 +1,15 @@
 import React from 'react';
-import { Typography,
-     Paper, 
-     Toolbar, 
-     Grid, 
-     TextField,
-     InputLabel,
-     Select,
-     MenuItem, 
-     Button } from '@mui/material';
+import {
+    Typography,
+    Paper,
+    Toolbar,
+    Grid,
+    TextField,
+    InputLabel,
+    Select,
+    MenuItem,
+    Button
+} from '@mui/material';
 
 
 
@@ -25,51 +27,57 @@ function CreateAccount() {
             </Typography>
             <Paper style={{ padding: "15px" }}>
                 <form>
-                    <div style={{ width: "40%", paddingTop: "10px" }}>
-                        <InputLabel>
-                            First Name
-                        </InputLabel>
-                        <TextField
-                            placeholder="First Name"
-                            id="outlined-size-small"
-                            defaultValue=""
-                            size="small"
-                        />
+                    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
+                        <div style={{ width: "48%" }}>
+                            <InputLabel>
+                                First Name
+                            </InputLabel>
+                            <TextField
+                                fullWidth
+                                placeholder="First Name"
+                                id="outlined-size-small"
+                                defaultValue=""
+                                size="small"
+                            />
+                        </div>
+                        <div style={{ width: "48%" }}>
+                            <InputLabel>
+                                Last Name
+                            </InputLabel>
+                            <TextField
+                                fullWidth
+                                placeholder="Last Name"
+                                id="outlined-size-small"
+                                defaultValue=""
+                                size="small"
+                            />
+                        </div>
                     </div>
-                    <div style={{ width: "40%" }}>
-                        <InputLabel>
-                            Last Name
-                        </InputLabel>
-                        <TextField
-                            placeholder="Last Name"
-                            id="outlined-size-small"
-                            defaultValue=""
-                            size="small"
-                        />
-                    </div>
-                    <div>
-                        <InputLabel>
-                            Full Name
-                        </InputLabel>
-                        <TextField
-                            fullWidth
-                            placeholder="Full Name"
-                            id="outlined-size-small"
-                            defaultValue=""
-                            size="small"
-                        />
-                    </div>
-                    <div>
-                        <InputLabel>
-                            Email
-                        </InputLabel>
-                        <TextField
-                            fullWidth
-                            placeholder="Email"
-                            id="outlined-size-small"
-                            defaultValue=""
-                            size="small"
-                        />
+                    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
+                        <div style={{ width: "48%" }}>
+                            <InputLabel>
+                                Full Name
+                            </InputLabel>
+                            <TextField
+                                fullWidth
+                                placeholder="Full Name"
+                                id="outlined-size-small"
+                                defaultValue=""
+                                size="small"
+                            />
+                        </div>
+                        <div style={{ width: "48%" }}>
+                            <InputLabel>
+                                Email
+                            </InputLabel>
+                            <TextField
+                                fullWidth
+                                placeholder="Email"
+                                id="outlined-size-small"
+                                defaultValue=""
+                                size="small"
+                            />
+                        </div>
                     </div>
                     <div>
                         <InputLabel>
@@ -129,7 +137,6 @@ function CreateAccount() {
                         </InputLabel>
                         <TextField
                             type="number"
-                            fullWidth
                             placeholder=" Primary Amount"
                             id="outlined-size-small"
                             defaultValue=""

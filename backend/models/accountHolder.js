@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 
 const accountHolderSchema = new mongoose.Schema({
+    AccountNo:{
+        type:Number,
+        default:0
+    },
     FirstName:{
         type:String,
         required:true
@@ -54,11 +58,6 @@ const accountHolderSchema = new mongoose.Schema({
     Date:{
         type:Date,
         default:new Date()
-    },
-
-    AccountNo:{
-        type:Number,
-        default:0
     },
     Transaction:[
        {

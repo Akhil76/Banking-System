@@ -43,7 +43,7 @@ function AccountDetails() {
                     <p>No :{params.accountNo}</p>
                     <Typography></Typography>
                     <Typography variant="h3">{accountHolder.FullName}</Typography>
-                    <Typography>Account No : 888909</Typography>
+                    <Typography>Account No : {accountHolder.AccountNo}</Typography>
                     <Typography>Total Balance : {accountHolder.MainBalance}</Typography>
                 </div>
                 <Paper>

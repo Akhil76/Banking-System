@@ -19,8 +19,11 @@ const createAccount = asynchandler(async(req,res)=>{
             Nominee,
             NomineePicture
         } = req.body;
+        const AccountHolders = await accountHolderModel.find();
+        const AccountNo = AccountHolders.length;
 
         const newAccount = await new accountHolderModel({
+            AccountNo:AccountNo+1,
             FirstName,
             LastName,
             FullName,

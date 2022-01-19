@@ -4,7 +4,7 @@ const accountHolderModel = require('../models/accountHolder');
 
 
 
-const transaction = asynchandler(async(req,res)=>{
+const createtransaction = asynchandler(async(req,res)=>{
 
     try{
         const AccountHolderId = req.body.id;
@@ -13,6 +13,7 @@ const transaction = asynchandler(async(req,res)=>{
         const AcHolder = await accountHolderModel.findById({_id:AccountHolderId});
         var PreviousBalance = AcHolder.MainBalance;
         var TotalBalance="";
+        
         if(TransactionType=="Deposit"){
             TotalBalance = PreviousBalance+Number(Deposit); // Number() is use to convert string into number
         }else if(TransactionType=="Withdraw"){
@@ -54,4 +55,41 @@ const transaction = asynchandler(async(req,res)=>{
     }
 });
 
-module.exports = {transaction};
+
+const alltransactions = asynchandler(async(req,res)=>{
+    try{
+        const data = await transactionModel.find();
+        res.status(200).json(data);
+    }catch(err){
+        res.status(500).json({
+            error:"Server side error occurred!"
+        })
+    }
+})
+
+
+const transactionByType = asynchandler(async(req,res)=>{
+    try{
+        const Type = req.params.type;
+        const data = await transactionModel.find({TransactionType:Type});
+        res.status(200).json(data);
+    }catch(err){
+        res.status(500).json({
+            error:"Server side error occurred!"
+        })
+    }
+});
+
+const transactionById = asynchandler(async(req,res)=>{
+    try{
+        const Id = req.params.id;
+        const data = await transactionModel.find({AccountHolderId:Id});
+        res.status(200).json(data);
+    }catch(err){
+        res.status(200).json({
+            error:"Server side error occurred!"
+        });
+    }
+})
+
+module.exports = {createtransaction,alltransactions,transactionByType,transactionById};
