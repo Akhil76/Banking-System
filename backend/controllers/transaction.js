@@ -73,6 +73,7 @@ const transactionByType = asynchandler(async(req,res)=>{
         const Type = req.params.type;
         const data = await transactionModel.find({TransactionType:Type});
         res.status(200).json(data);
+               
     }catch(err){
         res.status(500).json({
             error:"Server side error occurred!"
@@ -83,7 +84,7 @@ const transactionByType = asynchandler(async(req,res)=>{
 const transactionById = asynchandler(async(req,res)=>{
     try{
         const Id = req.params.id;
-        const data = await transactionModel.find({AccountHolderId:Id});
+        const data = await transactionModel.findById({AccountHolderId:Id});
         res.status(200).json(data);
     }catch(err){
         res.status(200).json({

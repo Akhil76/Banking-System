@@ -31,11 +31,11 @@ function Transaction() {
                     </Toolbar>
                 </Grid>
             </Grid>
-            <Grid container>
+            {/* <Grid container>
                 <TransactionButton title="Deposits" link=""/>
                 <TransactionButton title="Withdraw" link="withdraw"/>
                 <TransactionButton title="Transfer" link="transfer"/>
-            </Grid>
+            </Grid> */}
             <Grid>
                 <Outlet/>
             </Grid>

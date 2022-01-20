@@ -7,6 +7,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import {useDispatch,useSelector} from 'react-redux';
+import {alltransactions} from '../../statemanager/actions/transaction';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -31,6 +33,13 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 export default function TransactionTable() {
+  const dispatch = useDispatch();
+  const transactions = useSelector((state)=>state.transaction.transactions);
+
+  React.useEffect(()=>{
+    dispatch(alltransactions());
+  },[]);
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -44,24 +53,19 @@ export default function TransactionTable() {
           </TableRow>
         </TableHead>
         <TableBody>
+            {
+              transactions.map((tran)=>(
             <StyledTableRow>
               <StyledTableCell component="th" scope="row">
-                Akhil Paul
+                {tran.Withdraw}{tran.Deposit}
               </StyledTableCell>
-              <StyledTableCell align="right">00009988</StyledTableCell>
-              <StyledTableCell align="right">Withdraw</StyledTableCell>
+              <StyledTableCell align="right">{tran.AccountHolderId}</StyledTableCell>
+              <StyledTableCell align="right">{tran.TransactionType}</StyledTableCell>
               <StyledTableCell align="right">Cheque</StyledTableCell>
-              <StyledTableCell align="right">10000</StyledTableCell>
+              <StyledTableCell align="right">{tran.Withdraw}{tran.Deposit}</StyledTableCell>
             </StyledTableRow>
-            <StyledTableRow>
-              <StyledTableCell component="th" scope="row">
-                Akhil Paul
-              </StyledTableCell>
-              <StyledTableCell align="right">00009988</StyledTableCell>
-              <StyledTableCell align="right">Withdraw</StyledTableCell>
-              <StyledTableCell align="right">Cheque</StyledTableCell>
-              <StyledTableCell align="right">10000</StyledTableCell>
-            </StyledTableRow>
+              ))
+            }
         </TableBody>
       </Table>
     </TableContainer>

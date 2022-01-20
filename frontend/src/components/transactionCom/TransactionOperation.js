@@ -6,7 +6,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import {useDispatch} from 'react-redux';
-import {transaction} from '../../statemanager/actions/transaction';
+import {maketransaction} from '../../statemanager/actions/transaction';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -65,17 +65,17 @@ export default function TransactionOperation(props) {
     })
     const DepositHandler =(e)=>{
         e.preventDefault();
-        dispatch(transaction(depositData));
+        dispatch(maketransaction(depositData));
         setDepositData({Deposit:""});
     }
     const WithdrawHandler =(e)=>{
         e.preventDefault();
-        dispatch(transaction(withdrawData));
+        dispatch(maketransaction(withdrawData));
         setWithdrawData({Withdraw:""});
     }
     const TransferHandler =(e)=>{
         e.preventDefault();
-        dispatch(transaction(transferData));
+        dispatch(maketransaction(transferData));
         setTransferData({
             TransferingAccountNo:"",
             Transfer:""

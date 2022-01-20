@@ -36,7 +36,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 function AccountHoders() {
     const dispatch = useDispatch();
-    var accountHolders = useSelector((state) => state.allAccountHoders.items);
+    var accountHolders = useSelector((state) => state.allAccountHoders.accountHolders);
     const loading = useSelector((state) => state.allAccountHoders.loading);
 
     useEffect(() => {

@@ -1,12 +1,12 @@
 import axios from 'axios';
-import {TRANSACTION} from '../actionTypes/actionTypes';
+import {MAKE_TRANSACTION,ALL_TRANSACTION} from '../actionTypes/actionTypes';
 
 
-export const transaction = (transactiondata) =>(dispatch)=>{
+export const maketransaction = (transactiondata) =>(dispatch)=>{
     axios.post('/transaction',transactiondata)
     .then(Response =>{
         dispatch({
-            type:TRANSACTION,
+            type:MAKE_TRANSACTION,
             payload:{
                 transaction:Response.data
             }
@@ -17,3 +17,23 @@ export const transaction = (transactiondata) =>(dispatch)=>{
     })
 
 }
+
+
+export const alltransactions = () =>(dispatch)=>{
+    axios.get('/alltransactions')
+    .then(Response =>{
+        dispatch({
+            type:ALL_TRANSACTION,
+            payload:{
+                alltransactions:Response.data
+            }
+        })
+    })
+    .catch(error=>{
+        console.log(error)
+    })
+
+}
+
+
+
