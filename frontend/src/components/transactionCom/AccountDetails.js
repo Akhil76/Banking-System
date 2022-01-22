@@ -6,7 +6,7 @@ import Spinner from '../../components/Spinner';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { singleAccount } from '../../statemanager/actions/accountHoders';
-
+//import dest from '../../../../backend/uploadedFiles'
 
 const useStyles = makeStyles({
     root: {
@@ -56,14 +56,14 @@ function AccountDetails() {
                             <Typography>Total Balance : {ac.MainBalance}</Typography>
                         </div>
                         <Paper>
-                            <img src="/logo192.png" />
+                            <img src="../" />
                         </Paper>
                     </Grid>
                     <Grid>
                         <Grid className={classes.tranOperation} item xs={12} sm={12} md={12}>
                             <Paper>
                                 <Typography variant="h6">Signature Verification :</Typography>
-                                <img src="/logo192.png" />
+                                <img src={"../../../../backend/uploadedFiles/"+ac.Signature} />
                             </Paper>
                             <TransactionOperation 
                             id={ac._id} 

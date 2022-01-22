@@ -1,4 +1,4 @@
-import {ALL_ACCOUNT_HOLDERS, SINGLE_ACCOUNT} from '../actionTypes/actionTypes';
+import {ALL_ACCOUNT_HOLDERS,CREATE_AC, SINGLE_ACCOUNT} from '../actionTypes/actionTypes';
 
 const initialstate = {
     accountHolders:[],

@@ -13,6 +13,7 @@ const createAccount = asynchandler(async(req,res)=>{
             Address,
             Mobile,
             Birthdate,
+            AccountType,
             PrimaryAmount,
             Nominee,
         } = req.body;
@@ -33,6 +34,7 @@ const createAccount = asynchandler(async(req,res)=>{
             Address,
             Mobile,
             Birthdate,
+            AccountType,
             MainBalance:PrimaryAmount,
             Picture,
             Signature,
@@ -63,10 +65,10 @@ const createAccount = asynchandler(async(req,res)=>{
             message:"Account is created successfully."
         });
     }catch(error){
-        
+        console.log(error);
         res.status(500).json({
             error:"Server side error occurred and account is not created!"
-        })
+        });
     }
 });
 

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import {
     Typography,
     Paper,
@@ -10,13 +10,61 @@ import {
     MenuItem,
     Button
 } from '@mui/material';
-import {useDispatch} from 'react-redux';
-import {createAccount} from '../statemanager/actions/accountHoders';
+import { useDispatch } from 'react-redux';
+import { createAccount } from '../statemanager/actions/accountHoders';
 
 
 
 function CreateAccount() {
-
+    const dispatch = useDispatch();
+    const [accountInfo, setAccountInfo] = useState({
+        FirstName: "",
+        LastName: "",
+        FullName: "",
+        Email: "",
+        Address: "",
+        Mobile: "",
+        Birthdate: "",
+        AccountType: "",
+        PrimaryAmount: "",
+        Picture: "",
+        Signature: "",
+        Nominee: "",
+        NomineePicture: ""
+    });
+    const submitHandler = (e) => {
+        e.preventDefault();
+        const accountformdata = new FormData();
+        accountformdata.append("FirstName", accountInfo.FirstName);
+        accountformdata.append("LastName", accountInfo.LastName);
+        accountformdata.append("FullName", accountInfo.FullName);
+        accountformdata.append("Email", accountInfo.Email);
+        accountformdata.append("Address", accountInfo.Address);
+        accountformdata.append("Mobile", accountInfo.Mobile);
+        accountformdata.append("Birthdate", accountInfo.Birthdate);
+        accountformdata.append("AccountType", accountInfo.AccountType);
+        accountformdata.append("PrimaryAmount", accountInfo.PrimaryAmount);
+        accountformdata.append("Picture", accountInfo.Picture);
+        accountformdata.append("Signature", accountInfo.Signature);
+        accountformdata.append("Nominee", accountInfo.Nominee);
+        accountformdata.append("NomineePicture", accountInfo.NomineePicture);
+        dispatch(createAccount(accountformdata));
+        setAccountInfo({
+            FirstName: "",
+            LastName: "",
+            FullName: "",
+            Email: "",
+            Address: "",
+            Mobile: "",
+            Birthdate: "",
+            AccountType: "",
+            PrimaryAmount: "",
+            Picture: "",
+            Signature: "",
+            Nominee: "",
+            NomineePicture: ""
+        })
+    }
     return (
         <Grid>
             <Toolbar />
@@ -27,7 +75,8 @@ function CreateAccount() {
                 CreateAccount
             </Typography>
             <Paper style={{ padding: "15px" }}>
-                <form>
+                <p>{accountInfo.AccountType}{accountInfo.Birthdate}</p>
+                <form onSubmit={submitHandler}>
                     <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
                         <div style={{ width: "48%" }}>
                             <InputLabel>
@@ -37,8 +86,11 @@ function CreateAccount() {
                                 fullWidth
                                 placeholder="First Name"
                                 id="outlined-size-small"
-                                defaultValue=""
                                 size="small"
+                                type="text"
+                                Name="FirstName"
+                                value={accountInfo.FirstName}
+                                onChange={(e) => setAccountInfo({ ...accountInfo, FirstName: e.target.value })}
                             />
                         </div>
                         <div style={{ width: "48%" }}>
@@ -51,6 +103,10 @@ function CreateAccount() {
                                 id="outlined-size-small"
                                 defaultValue=""
                                 size="small"
+                                type="text"
+                                Name="LastName"
+                                value={accountInfo.LastName}
+                                onChange={(e) => setAccountInfo({ ...accountInfo, LastName: e.target.value })}
                             />
                         </div>
                     </div>
@@ -65,6 +121,10 @@ function CreateAccount() {
                                 id="outlined-size-small"
                                 defaultValue=""
                                 size="small"
+                                type="text"
+                                Name="FullName"
+                                value={accountInfo.FullName}
+                                onChange={(e) => setAccountInfo({ ...accountInfo, FullName: e.target.value })}
                             />
                         </div>
                         <div style={{ width: "48%" }}>
@@ -77,6 +137,10 @@ function CreateAccount() {
                                 id="outlined-size-small"
                                 defaultValue=""
                                 size="small"
+                                type="text"
+                                Name="Email"
+                                value={accountInfo.Email}
+                                onChange={(e) => setAccountInfo({ ...accountInfo, Email: e.target.value })}
                             />
                         </div>
                     </div>
@@ -90,6 +154,10 @@ function CreateAccount() {
                             id="outlined-size-small"
                             defaultValue=""
                             size="small"
+                            type="text"
+                            Name="Address"
+                            value={accountInfo.Address}
+                            onChangeCapture={(e) => setAccountInfo({ ...accountInfo, Address: e.target.value })}
                         />
                     </div>
                     <div>
@@ -103,6 +171,7 @@ function CreateAccount() {
                             id="outlined-size-small"
                             defaultValue=""
                             size="small"
+                            type="tel"
                         />
                     </div>
                     <div>
@@ -112,6 +181,9 @@ function CreateAccount() {
                         <TextField
                             type="date"
                             size="small"
+                            Name="Birthdate"
+                            value={accountInfo.Birthdate}
+                            onChange={(e) => setAccountInfo({ ...accountInfo, Birthdate: e.target.value })}
                         />
                     </div>
                     <div>
@@ -119,16 +191,14 @@ function CreateAccount() {
                             Account Type
                         </InputLabel>
                         <Select
-                            value=""
-                            //onChange={handleChange}
+                            value={accountInfo.AccountType}
+                            onChange={(e) => setAccountInfo({ ...accountInfo, AccountType: e.target.value })}
                             displayEmpty
                             //inputProps={{ 'aria-label': 'Without label' }}
                             size="small"
                         >
-                            <MenuItem value="">
-                                <em>Select a type</em>
-                            </MenuItem>
-                            <MenuItem value="Savings">Savings</MenuItem>
+                            <MenuItem value="">Select a type</MenuItem>
+                            <MenuItem value="Saving">Saving</MenuItem>
                             <MenuItem value="Current">Current</MenuItem>
                         </Select>
                     </div>
@@ -142,6 +212,10 @@ function CreateAccount() {
                             id="outlined-size-small"
                             defaultValue=""
                             size="small"
+                            type="number"
+                            Name="PrimaryAmount"
+                            value={accountInfo.PrimaryAmount}
+                            onChange={(e) => setAccountInfo({ ...accountInfo, PrimaryAmount: e.target.value })}
                         />
                     </div>
                     <div>
@@ -152,6 +226,8 @@ function CreateAccount() {
                             type="file"
                             id="outlined-size-small"
                             size="small"
+                            Name="Picture"
+                            onChange={(e) => setAccountInfo({ ...accountInfo, Picture: e.target.files[0] })}
                         />
                     </div>
                     <div>
@@ -162,6 +238,8 @@ function CreateAccount() {
                             type="file"
                             id="outlined-size-small"
                             size="small"
+                            Name="Signature"
+                            onChange={(e) => setAccountInfo({ ...accountInfo, Signature: e.target.files[0] })}
                         />
                     </div>
                     <div>
@@ -174,6 +252,10 @@ function CreateAccount() {
                             id="outlined-size-small"
                             defaultValue=""
                             size="small"
+                            type="text"
+                            Name="NomineeName"
+                            value={accountInfo.NomineeName}
+                            onChange={(e) => setAccountInfo({ ...accountInfo, NomineeName: e.target.value })}
                         />
                         <InputLabel>
                             Nominee's Picture
@@ -182,9 +264,11 @@ function CreateAccount() {
                             type="file"
                             id="outlined-size-small"
                             size="small"
+                            Name="NomineePicture"
+                            onChange={(e) => setAccountInfo({ ...accountInfo, NomineePicture: e.target.files[0] })}
                         />
                     </div>
-                    <Button variant="contained">Submit</Button>
+                    <Button type="submit" variant="contained">Submit</Button>
                 </form>
             </Paper>
         </Grid>

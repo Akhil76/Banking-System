@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { ALL_ACCOUNT_HOLDERS,CREATE_AC, SINGLE_ACCOUNT } from '../actionTypes/actionTypes';
 
-export const createAccount = (formdata)=>(dispatch)=>{
-    axios.post('/createaccount',formdata,{
+export const createAccount = (accountformdata)=>(dispatch)=>{
+    axios.post('/createaccount',accountformdata,{
         headers:{
             "content-type":"application/json"
         }
