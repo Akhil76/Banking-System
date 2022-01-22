@@ -14,6 +14,11 @@ const accountHolders = (state=initialstate,action)=>{
                 accountHolders:action.payload.accountHolders,
                 loading:false
             }
+        case CREATE_AC:
+            return{
+                ...state,
+                accountHolder:action.payload
+            }
         case SINGLE_ACCOUNT:
             return{
                 ...state,

@@ -14,11 +14,13 @@ const createAccount = asynchandler(async(req,res)=>{
             Mobile,
             Birthdate,
             PrimaryAmount,
-            Picture,
-            Signature,
             Nominee,
-            NomineePicture
         } = req.body;
+
+        const Picture = req.files.Picture[0].filename ; // multiple file upload using fields
+        const Signature = req.files.Signature[0].filename;
+        const NomineePicture = req.files.NomineePicture[0].filename;
+        
         const AccountHolders = await accountHolderModel.find();
         const AccountNo = AccountHolders.length;
 
@@ -37,6 +39,7 @@ const createAccount = asynchandler(async(req,res)=>{
             Nominee,
             NomineePicture
         });
+        
         const createdAccountData = await newAccount.save();
        
         const FirstTransaction = await new transactionModel({
@@ -60,6 +63,7 @@ const createAccount = asynchandler(async(req,res)=>{
             message:"Account is created successfully."
         });
     }catch(error){
+        
         res.status(500).json({
             error:"Server side error occurred and account is not created!"
         })

@@ -1,6 +1,24 @@
 import axios from 'axios';
-import { ALL_ACCOUNT_HOLDERS, SINGLE_ACCOUNT } from '../actionTypes/actionTypes';
+import { ALL_ACCOUNT_HOLDERS,CREATE_AC, SINGLE_ACCOUNT } from '../actionTypes/actionTypes';
 
+export const createAccount = (formdata)=>(dispatch)=>{
+    axios.post('/createaccount',formdata,{
+        headers:{
+            "content-type":"application/json"
+        }
+    })
+    .then(Response =>{
+        dispatch({
+            type:CREATE_AC,
+            payload:{
+                accountHolder:Response.data
+            }
+        })
+    })
+    .catch(error=>{
+        console.log(error)
+    })
+}
 
 export const allAccountHolders = () =>(dispatch)=>{
     axios.get('/allaccountholders')

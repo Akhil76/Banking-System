@@ -38,7 +38,7 @@ function AccountDetails() {
 
     useEffect(() => {
         dispatch(singleAccount(params.accountNo))
-    }, [singleAccount(params.accountNo)]);
+    }, [params.accountNo]);
     return (
         <Grid>
             {
