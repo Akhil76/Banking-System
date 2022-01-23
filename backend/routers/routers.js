@@ -6,7 +6,7 @@ const {createtransaction,
     alltransactions,
     transactionByType,
     transactionById} = require('../controllers/transaction');
-
+const imageReader = require('../controllers/imgfileReader');
 
 router.get("/allaccountholders",allaccountholders);
 router.get("/singleaccountholder/:id",singleAccountholder);
@@ -21,6 +21,7 @@ router.post("/transaction",createtransaction);
 router.get("/alltransactions",alltransactions);
 router.get("/transactionsbytype/:type",transactionByType);
 router.get("/transactionsbyid/:id",transactionById);
+router.get("/imagereader/:name",imageReader);
 
 
 
