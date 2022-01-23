@@ -144,35 +144,37 @@ function CreateAccount() {
                             />
                         </div>
                     </div>
-                    <div>
-                        <InputLabel>
-                            Address
-                        </InputLabel>
-                        <TextField
-                            fullWidth
-                            placeholder="Address"
-                            id="outlined-size-small"
-                            defaultValue=""
-                            size="small"
-                            type="text"
-                            Name="Address"
-                            value={accountInfo.Address}
-                            onChangeCapture={(e) => setAccountInfo({ ...accountInfo, Address: e.target.value })}
-                        />
-                    </div>
-                    <div>
-                        <InputLabel>
-                            Mobile No
-                        </InputLabel>
-                        <TextField
-                            type="number"
-                            fullWidth
-                            placeholder=" Mobile No"
-                            id="outlined-size-small"
-                            defaultValue=""
-                            size="small"
-                            type="tel"
-                        />
+                    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
+                        <div style={{ width: "48%" }}>
+                            <InputLabel>
+                                Address
+                            </InputLabel>
+                            <TextField
+                                fullWidth
+                                placeholder="Address"
+                                id="outlined-size-small"
+                                defaultValue=""
+                                size="small"
+                                type="text"
+                                Name="Address"
+                                value={accountInfo.Address}
+                                onChangeCapture={(e) => setAccountInfo({ ...accountInfo, Address: e.target.value })}
+                            />
+                        </div>
+                        <div style={{ width: "48%" }}>
+                            <InputLabel>
+                                Mobile No
+                            </InputLabel>
+                            <TextField
+                                type="number"
+                                fullWidth
+                                placeholder=" Mobile No"
+                                id="outlined-size-small"
+                                defaultValue=""
+                                size="small"
+                                type="tel"
+                            />
+                        </div>
                     </div>
                     <div>
                         <InputLabel>

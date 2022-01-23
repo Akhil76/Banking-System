@@ -56,14 +56,18 @@ function AccountDetails() {
                             <Typography>Total Balance : {ac.MainBalance}</Typography>
                         </div>
                         <Paper>
-                            <img src="../" />
+                            <div style={{display:"inline-flex",width:"160px",height:"200px"}}>
+                                <img src={"http://localhost:3001/imagereader/"+ac.Picture}/>
+                            </div>
                         </Paper>
                     </Grid>
                     <Grid>
                         <Grid className={classes.tranOperation} item xs={12} sm={12} md={12}>
                             <Paper>
                                 <Typography variant="h6">Signature Verification :</Typography>
-                                <img src={"../../../../backend/uploadedFiles/"+ac.Signature} />
+                                <div style={{display:"inline-flex",width:"240px",height:"200px"}}>
+                                    <img src={"http://localhost:3001/imagereader/"+ac.Signature} />
+                                </div>
                             </Paper>
                             <TransactionOperation 
                             id={ac._id} 
