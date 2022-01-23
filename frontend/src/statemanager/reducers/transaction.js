@@ -1,4 +1,4 @@
-import {ALL_TRANSACTION, MAKE_TRANSACTION} from '../actionTypes/actionTypes';
+import {ALL_TRANSACTION, MAKE_TRANSACTION,TRANS_BY_TYPE} from '../actionTypes/actionTypes';
 
 const initialstate = {
     transactions:[],
@@ -18,6 +18,12 @@ const transaction = (state=initialstate,action)=>{
                 transactions:action.payload.alltransactions,
                 loading:false
             }
+        case TRANS_BY_TYPE:
+            return{
+                ...state,
+                transactions:action.payload.transactionByType,
+                loading:false
+            }    
         default :
             return state
 

@@ -57,7 +57,7 @@ export default function TransactionTable() {
               transactions.map((tran)=>(
             <StyledTableRow>
               <StyledTableCell component="th" scope="row">
-                {tran.Withdraw}{tran.Deposit}
+                {tran.Name}
               </StyledTableCell>
               <StyledTableCell align="right">{tran.AccountHolderId}</StyledTableCell>
               <StyledTableCell align="right">{tran.TransactionType}</StyledTableCell>

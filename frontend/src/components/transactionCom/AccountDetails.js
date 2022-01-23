@@ -69,8 +69,10 @@ function AccountDetails() {
                                     <img src={"http://localhost:3001/imagereader/"+ac.Signature} />
                                 </div>
                             </Paper>
-                            <TransactionOperation 
-                            id={ac._id} 
+                            <TransactionOperation
+                            id={ac._id}
+                            Name={ac.FullName}
+                            AccountNo={ac.AccountNo}  
                             />
                         </Grid>
                     </Grid>

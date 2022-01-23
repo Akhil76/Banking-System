@@ -12,9 +12,9 @@ function Home() {
             <Toolbar />
             <div>
                 <Grid container>
-                    <DashboardButton title="Today's Deposits" amount="50000" link="/" />
-                    <DashboardButton title="Today's Withdraw" amount="50000" link="totalwithdraw" />
-                    <DashboardButton title="Today's Transfer" amount="50000" link="totaltransfer" />
+                    <DashboardButton title="Recent Deposits" amount="50000" link="/" />
+                    <DashboardButton title="Recent Withdraw" amount="50000" link="recentwithdraw" />
+                    <DashboardButton title="Recent Transfer" amount="50000" link="recenttransfer" />
                     <DashboardButton title="Account Holders" link="accountholders" />
                 </Grid>
                 <Grid container>

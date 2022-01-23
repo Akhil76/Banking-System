@@ -3,3 +3,4 @@ export const CREATE_AC = 'CREATE_AC';
 export const SINGLE_ACCOUNT = 'SINGLE_ACCOUNT';
 export const MAKE_TRANSACTION = 'TRANSACTION';
 export const ALL_TRANSACTION = 'ALL_TRANSACTION';
+export const TRANS_BY_TYPE = 'TRANS_BY_TYPE';

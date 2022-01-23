@@ -8,6 +8,12 @@ const transactionSchema = new mongoose.Schema({
         ref:"accountHolder",
         required:true
     },
+    Name:{
+        type:String
+    },
+    AccountNo:{
+        type:Number
+    },
     TransactionType:{
         type:String,
         enum:["Deposit","Withdraw","Transfer"]

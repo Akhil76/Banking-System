@@ -8,7 +8,7 @@ const createtransaction = asynchandler(async(req,res)=>{
 
     try{
         const AccountHolderId = req.body.id;
-        const {TransactionType,Deposit,Withdraw,Transfer,TransferingAccountNo} = req.body;
+        const {AccountNo,Name,TransactionType,Deposit,Withdraw,Transfer,TransferingAccountNo} = req.body;
         
         const AcHolder = await accountHolderModel.findById({_id:AccountHolderId});
         var PreviousBalance = AcHolder.MainBalance;
@@ -24,6 +24,8 @@ const createtransaction = asynchandler(async(req,res)=>{
        
         const transaction = await new transactionModel({
             AccountHolderId,
+            AccountNo,
+            Name,
             TransactionType,
             Deposit,
             Withdraw,

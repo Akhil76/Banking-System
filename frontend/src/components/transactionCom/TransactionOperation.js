@@ -48,17 +48,23 @@ export default function TransactionOperation(props) {
     const dispatch = useDispatch();
     const [depositData,setDepositData]=useState({
         id:props.id,
+        Name:props.Name,
+        AccountNo:props.AccountNo,
         TransactionType:"Deposit",
         Deposit:""
     })
 
     const [withdrawData,setWithdrawData]=useState({
         id:props.id,
+        Name:props.Name,
+        AccountNo:props.AccountNo,
         TransactionType:"Withdraw",
         Withdraw:""
     })
     const [transferData,setTransferData]=useState({
         id:props.id,
+        Name:props.Name,
+        AccountNo:props.AccountNo,
         TransactionType:"Transfer",
         TransferingAccountNo:"",
         Transfer:""
@@ -85,7 +91,7 @@ export default function TransactionOperation(props) {
     return (
         <Box sx={{ width: '70%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <p>{props.id}</p>
+               
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab label="Deposit" {...a11yProps(0)} />
                     <Tab label="Withdraw" {...a11yProps(1)} />

@@ -1,8 +1,8 @@
 import {Routes,Route} from "react-router-dom";
 import Home from '../pages/Home';
-import TotalDeposit from "../components/TotalDeposit";
-import TotalWithdraw from '../components/TotalWithdraw';
-import TotalTransfer from '../components/TotalTransfer';
+import RecentDeposit from "../components/RecentDeposit";
+import RecentWithdraw from '../components/RecentWithdraw';
+import RecentTransfer from '../components/RecentTransfer';
 import AccountHolders from '../components/AccountHolders';
 import CreateAccount from '../pages/CreateAccount';
 import Transaction from "../pages/Transaction";
@@ -18,9 +18,9 @@ function Router() {
     return (
         <Routes>
             <Route path="/" element={<Home />}>
-                <Route index element={<TotalDeposit/>}/>
-                <Route path="totalwithdraw" element={<TotalWithdraw/>}/>
-                <Route path="totaltransfer" element={<TotalTransfer/>}/>
+                <Route index element={<RecentDeposit/>}/>
+                <Route path="recentwithdraw" element={<RecentWithdraw/>}/>
+                <Route path="recenttransfer" element={<RecentTransfer/>}/>
                 <Route path="accountholders" element={<AccountHolders/>}/>
             </Route>
             <Route path="/createaccount" element={<CreateAccount />}/>
