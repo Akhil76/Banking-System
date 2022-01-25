@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { Grid, Typography, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Spinner from '../Spinner';
+import moment from 'moment';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { singleAccount } from '../../statemanager/actions/accountHoders';
-
 
 const useStyles = makeStyles({
     root: {
@@ -34,7 +34,7 @@ function AccountSearchData() {
     const dispatch = useDispatch();
     const accountHolder = useSelector((state) => state.allAccountHoders.accountHolder);
     const loading = useSelector((state) => state.allAccountHoders.loading);
-
+    
     useEffect(() => {
         dispatch(singleAccount(params.accountNo))
     }, [params.accountNo]);
@@ -49,7 +49,6 @@ function AccountSearchData() {
                 <div>
                     <Grid className={classes.AcInfo} item xs={12} sm={12} md={12}>
                         <div>
-                            <Typography></Typography>
                             <Typography variant="h3">{ac.FullName}</Typography>
                             <Typography>Account No : {ac.AccountNo}</Typography>
                             <Typography>Account Type : {ac.AccountType}</Typography>
@@ -61,7 +60,7 @@ function AccountSearchData() {
                             <Typography>Total Balance : {ac.MainBalance}</Typography>
                         </div>
                         <Paper>
-                            <div style={{display:"inline-flex",width:"160px",height:"200px"}}>
+                            <div style={{display:"inline-flex",width:"170px",height:"210px"}}>
                                 <img src={"http://localhost:3001/imagereader/"+ac.Picture}/>
                             </div>
                         </Paper>
@@ -78,7 +77,12 @@ function AccountSearchData() {
                                 <Typography variant="h5">All Transactions</Typography>
                                 {ac.Transaction.map((tran)=>(
                                 <div>
-                                    <Typography>{tran.Date} - {tran.TransactionType} - {tran.Deposit}{tran.Withdraw} -{tran.Balance}</Typography>
+                                    <Typography>
+                                      {moment(tran.Date).format('DD-MM-YYYY')} 
+                                    - {tran.TransactionType} 
+                                    - {tran.Deposit}{tran.Withdraw}{tran.Transfer} 
+                                    -{tran.Balance}
+                                    </Typography>
                                 </div>
                                 ))}
                             </Paper>

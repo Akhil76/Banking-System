@@ -60,7 +60,7 @@ const createtransaction = asynchandler(async(req,res)=>{
 
 const alltransactions = asynchandler(async(req,res)=>{
     try{
-        const data = await transactionModel.find();
+        const data = await transactionModel.find().sort({_id:-1});
         res.status(200).json(data);
     }catch(err){
         res.status(500).json({
@@ -73,7 +73,7 @@ const alltransactions = asynchandler(async(req,res)=>{
 const transactionByType = asynchandler(async(req,res)=>{
     try{
         const Type = req.params.type;
-        const data = await transactionModel.find({TransactionType:Type});
+        const data = await transactionModel.find({TransactionType:Type}).sort({_id:-1});
         res.status(200).json(data);
                
     }catch(err){
@@ -86,7 +86,7 @@ const transactionByType = asynchandler(async(req,res)=>{
 const transactionById = asynchandler(async(req,res)=>{
     try{
         const Id = req.params.id;
-        const data = await transactionModel.findById({AccountHolderId:Id});
+        const data = await transactionModel.findById({AccountHolderId:Id}).sort({_id:-1});
         res.status(200).json(data);
     }catch(err){
         res.status(200).json({
