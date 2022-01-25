@@ -27,7 +27,7 @@ function Transaction() {
                 <Grid style={{ background: "#81d4fa" }} item xs={12} sm={12} md={12}>
                     <Toolbar className={classes.bar}>
                         <Typography variant="h6">Transactions</Typography>
-                        <SearchAccount/>
+                        <SearchAccount url="transaction"/>
                     </Toolbar>
                 </Grid>
             </Grid>

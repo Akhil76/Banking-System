@@ -88,7 +88,7 @@ const allaccountholders = asynchandler(async(req,res)=>{
 const singleAccountholder = asynchandler(async(req,res)=>{
     try{
         const Id = req.params.id;
-        const data = await accountHolderModel.find({AccountNo:Id});
+        const data = await accountHolderModel.find({AccountNo:Id}).populate('Transaction');
         res.status(200).json(data);
         
     }catch(error){

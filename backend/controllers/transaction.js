@@ -48,7 +48,7 @@ const createtransaction = asynchandler(async(req,res)=>{
         );
         res.status(200).json({
             result:transactionData,
-            message:"transaction is successful."
+            message:"Transaction is successful."
         });
     }catch(error){
         res.status(500).json({

@@ -7,10 +7,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Spinner from '../components/Spinner';
-import { Grid } from "@mui/material";
+import Spinner from '../../components/Spinner';
+import { Grid ,Button} from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { allAccountHolders } from '../statemanager/actions/accountHoders';
+import { allAccountHolders } from '../../statemanager/actions/accountHoders';
 
 
 
@@ -34,7 +35,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-function AccountHolders() {
+function AllaccountHolders() {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     var accountHolders = useSelector((state) => state.allAccountHoders.accountHolders);
     const loading = useSelector((state) => state.allAccountHoders.loading);
@@ -56,9 +58,8 @@ function AccountHolders() {
                                     <StyledTableCell>Photo</StyledTableCell>
                                     <StyledTableCell align="Left">Name</StyledTableCell>
                                     <StyledTableCell align="center">Account No</StyledTableCell>
-                                    <StyledTableCell align="Left">Account Type</StyledTableCell>
-                                    <StyledTableCell align="right">Description</StyledTableCell>
-                                    <StyledTableCell align="right">Balance</StyledTableCell>
+                                    <StyledTableCell align="Left">Balance</StyledTableCell>
+                                    <StyledTableCell align="center">Actions</StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -72,9 +73,23 @@ function AccountHolders() {
                                             </StyledTableCell>
                                             <StyledTableCell align="Left">{acholder.FullName}</StyledTableCell>
                                             <StyledTableCell align="center">{acholder.AccountNo}</StyledTableCell>
-                                            <StyledTableCell align="left">{acholder.AccountType}</StyledTableCell>
-                                            <StyledTableCell align="right">Cheque</StyledTableCell>
-                                            <StyledTableCell align="right">{acholder.MainBalance}</StyledTableCell>
+                                            <StyledTableCell align="left">{acholder.MainBalance}</StyledTableCell>
+                                            <StyledTableCell align="center">
+                                                <Button 
+                                                variant="contained" 
+                                                color="primary"
+                                               
+                                                >Modify</Button>
+                                                <Button 
+                                                variant="contained" 
+                                                color="primary"
+                                                >Delete</Button>
+                                                <Button 
+                                                variant="contained" 
+                                                color="primary"
+                                                onClick={()=>{navigate(`/accountmanager/${acholder.AccountNo}`)}}
+                                                >Details</Button>
+                                            </StyledTableCell>
                                         </StyledTableRow>
                                     )
                                 }
@@ -88,4 +103,4 @@ function AccountHolders() {
 }
 
 
-export default AccountHolders;
+export default AllaccountHolders;

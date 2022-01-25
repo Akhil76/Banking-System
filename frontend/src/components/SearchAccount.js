@@ -16,8 +16,9 @@ const useStyles = makeStyles({
 
 });
 
-function SearchAccount() {
+function SearchAccount(props) {
     const classes = useStyles();
+    const url = props.url;
     let navigate = useNavigate();
     const [accountNo,setAccountNo] = useState("");
     const [searchErr,setSearchErr] = useState("");
@@ -28,7 +29,7 @@ function SearchAccount() {
     const submitHandler=(e)=>{
         e.preventDefault();
         if (accountNo !== "") {
-            navigate(`/transaction/${accountNo}`);
+            navigate(`/${url}/${accountNo}`);
             setSearchErr("");
         }else{
             setSearchErr("Please,enter an account No!") 

@@ -93,7 +93,7 @@ export default function TransactionOperation(props) {
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="Deposit" {...a11yProps(0)} />
+                    <Tab style={{textTransform:"none"}} label="Deposit" {...a11yProps(0)} />
                     <Tab label="Withdraw" {...a11yProps(1)} />
                     <Tab label="Transfer" {...a11yProps(2)} />
                 </Tabs>
@@ -110,6 +110,7 @@ export default function TransactionOperation(props) {
                         onChange={(e)=>setDepositData({...depositData,Deposit:e.target.value})}
                     />
                     <Button
+                        style={{textTransform:"none"}}
                         type="submit"
                         variant="contained"
                         color="primary"
@@ -128,6 +129,7 @@ export default function TransactionOperation(props) {
                         onChange={(e)=>setWithdrawData({...withdrawData,Withdraw:e.target.value})}
                     />
                     <Button
+                        style={{textTransform:"none"}}
                         type="submit"
                         variant="contained"
                         color="primary"
@@ -155,6 +157,7 @@ export default function TransactionOperation(props) {
                         onChange={(e)=>setTransferData({...transferData,Transfer:e.target.value})}
                     />
                     <Button
+                        style={{textTransform:"none"}}
                         type="submit"
                         variant="contained"
                         color="primary"

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Grid, Toolbar } from '@mui/material';
 import DashboardButton from '../components/DashboardButton';
 import { Outlet } from 'react-router-dom';

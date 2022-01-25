@@ -59,7 +59,7 @@ export default function TransactionTable() {
               <StyledTableCell component="th" scope="row">
                 {tran.Name}
               </StyledTableCell>
-              <StyledTableCell align="right">{tran.AccountHolderId}</StyledTableCell>
+              <StyledTableCell align="right">{tran.AccountNo}</StyledTableCell>
               <StyledTableCell align="right">{tran.TransactionType}</StyledTableCell>
               <StyledTableCell align="right">Cheque</StyledTableCell>
               <StyledTableCell align="right">{tran.Withdraw}{tran.Deposit}</StyledTableCell>

@@ -54,7 +54,7 @@ function RecentWithdraw(){
                                 <TableRow>
                                     <StyledTableCell align="Left">Name</StyledTableCell>
                                     <StyledTableCell align="center">Account No</StyledTableCell>
-                                    <StyledTableCell align="Left">Account Type</StyledTableCell>
+                                    <StyledTableCell align="Left">Transaction Type</StyledTableCell>
                                     <StyledTableCell align="right">Withdraw Amount</StyledTableCell>
                                     <StyledTableCell align="right">Balance</StyledTableCell>
                                 </TableRow>
@@ -63,9 +63,9 @@ function RecentWithdraw(){
                                 {
                                     transactions.map((tran) =>
                                         <StyledTableRow>             
-                                            <StyledTableCell align="Left">Empty</StyledTableCell>
-                                            <StyledTableCell align="center">{tran._id}</StyledTableCell>
-                                            <StyledTableCell align="left">{tran._id}</StyledTableCell>
+                                            <StyledTableCell align="Left">{tran.Name}</StyledTableCell>
+                                            <StyledTableCell align="center">{tran.AccountNo}</StyledTableCell>
+                                            <StyledTableCell align="left">{tran.TransactionType}</StyledTableCell>
                                             <StyledTableCell align="right">{tran.Withdraw}</StyledTableCell>
                                             <StyledTableCell align="right">{tran.Balance}</StyledTableCell>
                                         </StyledTableRow>

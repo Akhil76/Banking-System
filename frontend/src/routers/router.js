@@ -12,6 +12,8 @@ import Withdraw from "../components/transactionCom/Withdraw";
 import Transfer from "../components/transactionCom/Transfer";
 import AccountDetails from "../components/transactionCom/AccountDetails";
 import AccountManager from "../pages/AccountManager";
+import AllaccountHolders from "../components/AccountManagerCom/AllaccountHolders";
+import AccountSearchData from "../components/AccountManagerCom/AccountSearchData";
 
 
 function Router() {
@@ -31,7 +33,10 @@ function Router() {
                 <Route path="transfer" element={<Transfer/>}/>
                 <Route path=":accountNo" element={<AccountDetails/>}/>
             </Route>
-            <Route path="/accountmanager" element={<AccountManager/>}/>
+            <Route path="/accountmanager/" element={<AccountManager/>}>
+                <Route index element={<AllaccountHolders/>}/>
+                <Route path=":accountNo" element={<AccountSearchData/>}/>
+            </Route>
         </Routes>
     )
 }

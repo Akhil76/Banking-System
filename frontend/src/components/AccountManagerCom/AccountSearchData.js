@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { Grid, Typography, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import TransactionOperation from '../transactionCom/TransactionOperation';
-import Spinner from '../../components/Spinner';
+import Spinner from '../Spinner';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { singleAccount } from '../../statemanager/actions/accountHoders';
-//import dest from '../../../../backend/uploadedFiles'
+
 
 const useStyles = makeStyles({
     root: {
@@ -29,7 +28,7 @@ const useStyles = makeStyles({
 
 });
 
-function AccountDetails() {
+function AccountSearchData() {
     const params = useParams();
     const classes = useStyles();
     const dispatch = useDispatch();
@@ -50,6 +49,7 @@ function AccountDetails() {
                 <div>
                     <Grid className={classes.AcInfo} item xs={12} sm={12} md={12}>
                         <div>
+                            <Typography></Typography>
                             <Typography variant="h3">{ac.FullName}</Typography>
                             <Typography>Account No : {ac.AccountNo}</Typography>
                             <Typography>Account Type : {ac.AccountType}</Typography>
@@ -74,11 +74,14 @@ function AccountDetails() {
                                     <img src={"http://localhost:3001/imagereader/"+ac.Signature} />
                                 </div>
                             </Paper>
-                            <TransactionOperation
-                            id={ac._id}
-                            Name={ac.FullName}
-                            AccountNo={ac.AccountNo}  
-                            />
+                            <Paper>
+                                <Typography variant="h5">All Transactions</Typography>
+                                {ac.Transaction.map((tran)=>(
+                                <div>
+                                    <Typography>{tran.Date} - {tran.TransactionType} - {tran.Deposit}{tran.Withdraw} -{tran.Balance}</Typography>
+                                </div>
+                                ))}
+                            </Paper>
                         </Grid>
                     </Grid>
                 </div>
@@ -91,4 +94,4 @@ function AccountDetails() {
 }
 
 
-export default AccountDetails;
+export default AccountSearchData;
