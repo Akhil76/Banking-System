@@ -16,7 +16,8 @@ app.use(passport.initialize())
 app.use('/',routers);
 
 PORT = process.env.PORT;
-Db_url = process.env.DB;
+
+Db_url = `mongodb+srv://${process.env.User}:${process.env.Password}@bank.klnpa.mongodb.net/${process.env.DbName}?retryWrites=true&w=majority`;
 app.listen(PORT,()=>{
     console.log(`Server is running on PORT ${PORT}`);
     mongoose.connect(Db_url,{
