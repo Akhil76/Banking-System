@@ -14,7 +14,7 @@ import AccountDetails from "../components/transactionCom/AccountDetails";
 import AccountManager from "../pages/AccountManager";
 import AllaccountHolders from "../components/AccountManagerCom/AllaccountHolders";
 import AccountSearchData from "../components/AccountManagerCom/AccountSearchData";
-
+import Login from "../pages/Login";
 
 function Router() {
     return (
@@ -37,6 +37,7 @@ function Router() {
                 <Route index element={<AllaccountHolders/>}/>
                 <Route path=":accountNo" element={<AccountSearchData/>}/>
             </Route>
+            <Route path="/login" element={<Login/>}/>
         </Routes>
     )
 }

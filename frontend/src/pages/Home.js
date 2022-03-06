@@ -18,7 +18,7 @@ function Home() {
                     <DashboardButton title="Account Holders" link="accountholders" />
                 </Grid>
                 <Grid container>
-                    <Outlet /> {/*---Router---*/}
+                    <Outlet /> {/*---Nested Router---*/}
                 </Grid>
             </div>
         </div>

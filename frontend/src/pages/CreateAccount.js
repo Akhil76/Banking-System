@@ -249,7 +249,6 @@ function CreateAccount() {
                             Nominee Name
                         </InputLabel>
                         <TextField
-                            fullWidth
                             placeholder="Nominee Name"
                             id="outlined-size-small"
                             defaultValue=""

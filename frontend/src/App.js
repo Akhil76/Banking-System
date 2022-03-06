@@ -20,7 +20,6 @@ function App() {
     setOpen(false);
   };
   return (
-   
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <Header
@@ -38,7 +37,6 @@ function App() {
           <Router/>
         </Box>
       </Box>
-    
   );
 }
 
