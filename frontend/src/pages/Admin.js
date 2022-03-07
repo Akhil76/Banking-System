@@ -3,13 +3,7 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Header from '../components/layout/Header';
 import Sidebar from '../components/layout/Sidebar';
-import { Grid, Toolbar } from '@mui/material';
-import DashboardButton from '../components/DashboardButton';
 import {Outlet } from 'react-router-dom';
-import RecentDeposit from '../components/RecentDeposit';
-import RecentWithdraw from '../components/RecentWithdraw';
-import RecentTransfer from '../components/RecentTransfer';
-import AccountHolders from '../components/AccountHolders';
 
 
 const drawerWidth = 240;

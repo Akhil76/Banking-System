@@ -46,6 +46,9 @@ const createAccount = asynchandler(async(req,res)=>{
        
         const FirstTransaction = await new transactionModel({
             AccountHolderId:createdAccountData._id,
+            AccountNo:createdAccountData.AccountNo,
+            Name:createdAccountData.FullName,
+            TransactionType:"Deposit",
             Deposit:createdAccountData.MainBalance,
             Balance:createdAccountData.MainBalance
         });
@@ -65,7 +68,6 @@ const createAccount = asynchandler(async(req,res)=>{
             message:"Account is created successfully."
         });
     }catch(error){
-        console.log(error);
         res.status(500).json({
             error:"Server side error occurred and account is not created!"
         });
