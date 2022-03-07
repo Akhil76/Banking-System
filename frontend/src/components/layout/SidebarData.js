@@ -32,7 +32,7 @@ export const SidebarDatas = [
     {
         title: "Settings",
         icon :<SettingsIcon/>,
-        Link:"/admin/setting",
+        Link:"/setting",
         ExpandMoreIcon:<ExpandMoreIcon/>,
         ExpandLessIcon:<ExpandLessIcon/>,
         subnav:[

@@ -54,7 +54,7 @@ function Login(){
                             type="submit"
                             variant="contained"
                             color="primary"
-                        >Sign in</Button>
+                        >Log in</Button>
                     </form>
                 </Box>
             </Grid>
