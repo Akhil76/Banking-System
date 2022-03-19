@@ -172,7 +172,8 @@ function CreateAccount() {
                                 id="outlined-size-small"
                                 defaultValue=""
                                 size="small"
-                                type="tel"
+                                value={accountInfo.Mobile}
+                                onChangeCapture={(e) => setAccountInfo({ ...accountInfo, Mobile: e.target.value })}
                             />
                         </div>
                     </div>
@@ -214,7 +215,6 @@ function CreateAccount() {
                             id="outlined-size-small"
                             defaultValue=""
                             size="small"
-                            type="number"
                             Name="PrimaryAmount"
                             value={accountInfo.PrimaryAmount}
                             onChange={(e) => setAccountInfo({ ...accountInfo, PrimaryAmount: e.target.value })}
@@ -255,8 +255,8 @@ function CreateAccount() {
                             size="small"
                             type="text"
                             Name="NomineeName"
-                            value={accountInfo.NomineeName}
-                            onChange={(e) => setAccountInfo({ ...accountInfo, NomineeName: e.target.value })}
+                            value={accountInfo.Nominee}
+                            onChange={(e) => setAccountInfo({ ...accountInfo, Nominee:e.target.value })}
                         />
                         <InputLabel>
                             Nominee's Picture
@@ -271,6 +271,7 @@ function CreateAccount() {
                     </div>
                     <Button type="submit" variant="contained">Submit</Button>
                 </form>
+                
             </Paper>
         </Grid>
     )
