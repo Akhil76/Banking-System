@@ -2,6 +2,8 @@ import {ALL_TRANSACTION, MAKE_TRANSACTION,TRANS_BY_TYPE} from '../actionTypes/ac
 
 const initialstate = {
     transactions:[],
+    message:{},
+    error:{},
     loading:true
 }
 
@@ -10,7 +12,7 @@ const transaction = (state=initialstate,action)=>{
         case MAKE_TRANSACTION:
             return{
                 ...state,
-                transaction:action.payload
+                message:action.payload.message
             }
         case ALL_TRANSACTION:
             return{

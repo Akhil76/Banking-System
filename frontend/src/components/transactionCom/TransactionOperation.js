@@ -1,12 +1,13 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { TextField, Button } from '@mui/material';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import {maketransaction} from '../../statemanager/actions/transaction';
+
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -45,7 +46,11 @@ export default function TransactionOperation(props) {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    //----------------------------------------------------------------------------------------------------
     const dispatch = useDispatch();
+    const message = useSelector((state)=>state.transaction.message);
+
+   
     const [depositData,setDepositData]=useState({
         id:props.id,
         Name:props.Name,
@@ -88,10 +93,11 @@ export default function TransactionOperation(props) {
     
         });
     }
+    //--------------------------------------------------------------------------------------------------------------
     return (
         <Box sx={{ width: '70%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-               
+               <p>Success:{message.message}</p>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab style={{textTransform:"none"}} label="Deposit" {...a11yProps(0)} />
                     <Tab label="Withdraw" {...a11yProps(1)} />

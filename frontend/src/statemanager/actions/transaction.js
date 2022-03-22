@@ -8,14 +8,13 @@ export const maketransaction = (transactiondata) =>(dispatch)=>{
         dispatch({
             type:MAKE_TRANSACTION,
             payload:{
-                transaction:Response.data
+                message:Response.data
             }
         })
     })
     .catch(error=>{
         console.log(error)
     })
-
 }
 
 
