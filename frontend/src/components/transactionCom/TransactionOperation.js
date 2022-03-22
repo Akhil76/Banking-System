@@ -1,12 +1,14 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button } from '@mui/material';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import {useDispatch,useSelector} from 'react-redux';
-import {maketransaction} from '../../statemanager/actions/transaction';
+import { Alert } from '@mui/material';
+import Snackbar from '@mui/material/Snackbar';
+import { useDispatch, useSelector } from 'react-redux';
+import { maketransaction } from '../../statemanager/actions/transaction';
 
 
 function TabPanel(props) {
@@ -48,58 +50,62 @@ export default function TransactionOperation(props) {
     };
     //----------------------------------------------------------------------------------------------------
     const dispatch = useDispatch();
-    const message = useSelector((state)=>state.transaction.message);
+    const message = useSelector((state) => state.transaction.message);
 
-   
-    const [depositData,setDepositData]=useState({
-        id:props.id,
-        Name:props.Name,
-        AccountNo:props.AccountNo,
-        TransactionType:"Deposit",
-        Deposit:""
+
+    const [depositData, setDepositData] = useState({
+        id: props.id,
+        Name: props.Name,
+        AccountNo: props.AccountNo,
+        TransactionType: "Deposit",
+        Deposit: ""
     })
 
-    const [withdrawData,setWithdrawData]=useState({
-        id:props.id,
-        Name:props.Name,
-        AccountNo:props.AccountNo,
-        TransactionType:"Withdraw",
-        Withdraw:""
+    const [withdrawData, setWithdrawData] = useState({
+        id: props.id,
+        Name: props.Name,
+        AccountNo: props.AccountNo,
+        TransactionType: "Withdraw",
+        Withdraw: ""
     })
-    const [transferData,setTransferData]=useState({
-        id:props.id,
-        Name:props.Name,
-        AccountNo:props.AccountNo,
-        TransactionType:"Transfer",
-        TransferingAccountNo:"",
-        Transfer:""
+    const [transferData, setTransferData] = useState({
+        id: props.id,
+        Name: props.Name,
+        AccountNo: props.AccountNo,
+        TransactionType: "Transfer",
+        TransferingAccountNo: "",
+        Transfer: ""
     })
-    const DepositHandler =(e)=>{
+    const DepositHandler = (e) => {
         e.preventDefault();
         dispatch(maketransaction(depositData));
-        setDepositData({Deposit:""});
+        setDepositData({ Deposit: "" });
     }
-    const WithdrawHandler =(e)=>{
+    const WithdrawHandler = (e) => {
         e.preventDefault();
         dispatch(maketransaction(withdrawData));
-        setWithdrawData({Withdraw:""});
+        setWithdrawData({ Withdraw: "" });
     }
-    const TransferHandler =(e)=>{
+    const TransferHandler = (e) => {
         e.preventDefault();
         dispatch(maketransaction(transferData));
         setTransferData({
-            TransferingAccountNo:"",
-            Transfer:""
-    
+            TransferingAccountNo: "",
+            Transfer: ""
+
         });
     }
     //--------------------------------------------------------------------------------------------------------------
+    const [open, setOpen] = React.useState(true);// for opening successful message snackbar
     return (
+
         <Box sx={{ width: '70%' }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-               <p>Success:{message.message}</p>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>    
+                {message.message &&
+                <Snackbar autoHideDuration={2000} open={open} onClose={() => setOpen(false)}  message={message.message}/>
+                }
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab style={{textTransform:"none"}} label="Deposit" {...a11yProps(0)} />
+                    <Tab style={{ textTransform: "none" }} label="Deposit" {...a11yProps(0)} />
                     <Tab label="Withdraw" {...a11yProps(1)} />
                     <Tab label="Transfer" {...a11yProps(2)} />
                 </Tabs>
@@ -113,10 +119,10 @@ export default function TransactionOperation(props) {
                         size="small"
                         placeholder='Enter amount'
                         value={depositData.Deposit}
-                        onChange={(e)=>setDepositData({...depositData,Deposit:e.target.value})}
+                        onChange={(e) => setDepositData({ ...depositData, Deposit: e.target.value })}
                     />
                     <Button
-                        style={{textTransform:"none"}}
+                        style={{ textTransform: "none" }}
                         type="submit"
                         variant="contained"
                         color="primary"
@@ -132,10 +138,10 @@ export default function TransactionOperation(props) {
                         size="small"
                         placeholder='Enter amount'
                         value={withdrawData.Withdraw}
-                        onChange={(e)=>setWithdrawData({...withdrawData,Withdraw:e.target.value})}
+                        onChange={(e) => setWithdrawData({ ...withdrawData, Withdraw: e.target.value })}
                     />
                     <Button
-                        style={{textTransform:"none"}}
+                        style={{ textTransform: "none" }}
                         type="submit"
                         variant="contained"
                         color="primary"
@@ -151,7 +157,7 @@ export default function TransactionOperation(props) {
                         size="small"
                         placeholder='Account no'
                         value={transferData.TransferingAccountNo}
-                        onChange={(e)=>setTransferData({...transferData,TransferingAccountNo:e.target.value})}
+                        onChange={(e) => setTransferData({ ...transferData, TransferingAccountNo: e.target.value })}
                     />
                     <label>Transfer Amount:</label>
                     <TextField
@@ -160,10 +166,10 @@ export default function TransactionOperation(props) {
                         size="small"
                         placeholder='Enter amount'
                         value={transferData.Transfer}
-                        onChange={(e)=>setTransferData({...transferData,Transfer:e.target.value})}
+                        onChange={(e) => setTransferData({ ...transferData, Transfer: e.target.value })}
                     />
                     <Button
-                        style={{textTransform:"none"}}
+                        style={{ textTransform: "none" }}
                         type="submit"
                         variant="contained"
                         color="primary"
