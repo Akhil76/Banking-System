@@ -12,14 +12,14 @@ const {createtransaction,
     transactionById} = require('../controllers/transaction');
 const imageReader = require('../controllers/imgfileReader');
 const {adminCreate,login} = require('../controllers/admin');
- 
+const auth = require('../middlewares/authenticated');
 
 
 
 
 
 
-router.get("/allaccountholders",allaccountholders);
+router.get("/allaccountholders",auth,allaccountholders);
 router.get("/singleaccountholder/:id",singleAccountholder);
 
 router.post("/createaccount",upload.fields([

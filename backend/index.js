@@ -10,8 +10,8 @@ dotenv.config();
 app.use(cors());
 app.use(express.json({limit: '50mb', extended:true}));
 app.use(express.urlencoded({limit: '50mb', extended:true}));
-app.use(passport.initialize())
-
+app.use(passport.initialize());
+require('./middlewares/passport')(passport);
 
 app.use('/',routers);
 
