@@ -11,7 +11,7 @@ import Spinner from '../../components/Spinner';
 import { Grid ,Button} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { allAccountHolders } from '../../statemanager/actions/accountHoders';
+import { allAccountHolders,deletingAccount} from '../../statemanager/actions/accountHoders';
 
 
 
@@ -76,15 +76,19 @@ function AllaccountHolders() {
                                             <StyledTableCell align="left">{acholder.MainBalance}</StyledTableCell>
                                             <StyledTableCell align="center">
                                                 <Button 
+                                                style={{textTransform:"none"}}
                                                 variant="contained" 
                                                 color="primary"
-                                               
+
                                                 >Modify</Button>
                                                 <Button 
+                                                style={{textTransform:"none"}}
                                                 variant="contained" 
                                                 color="primary"
+                                                onClick={()=>dispatch(deletingAccount(acholder._id))}
                                                 >Delete</Button>
                                                 <Button 
+                                                style={{textTransform:"none"}}
                                                 variant="contained" 
                                                 color="primary"
                                                 onClick={()=>{navigate(`/accountmanager/${acholder.AccountNo}`)}}

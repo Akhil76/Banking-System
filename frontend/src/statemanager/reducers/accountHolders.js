@@ -1,4 +1,4 @@
-import {ALL_ACCOUNT_HOLDERS,CREATE_AC, SINGLE_ACCOUNT} from '../actionTypes/actionTypes';
+import {ALL_ACCOUNT_HOLDERS,CREATE_AC, DELACCOUNT, SINGLE_ACCOUNT} from '../actionTypes/actionTypes';
 
 const initialstate = {
     accountHolders:[],
@@ -18,6 +18,13 @@ const accountHolders = (state=initialstate,action)=>{
             return{
                 ...state,
                 accountHolder:action.payload
+            }
+        case DELACCOUNT:
+            return{
+                ...state,
+                accountHolders:state.accountHolders.map((e)=>
+                e._id===action.payload.id?action.payload:e
+                )
             }
         case SINGLE_ACCOUNT:
             return{

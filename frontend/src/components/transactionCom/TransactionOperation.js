@@ -100,9 +100,19 @@ export default function TransactionOperation(props) {
     return (
 
         <Box sx={{ width: '70%' }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>    
-                {message.message &&
-                <Snackbar autoHideDuration={2000} open={open} onClose={() => setOpen(false)}  message={message.message}/>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+               {
+               message.message &&
+               <Snackbar
+                    open={open}
+                    autoHideDuration={6000}
+                    onClose={() => setOpen(false)}
+                    anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                >
+                    <Alert severity="success" sx={{ width: '100%' }}>
+                        {message.message}
+                    </Alert>
+                </Snackbar>
                 }
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab style={{ textTransform: "none" }} label="Deposit" {...a11yProps(0)} />

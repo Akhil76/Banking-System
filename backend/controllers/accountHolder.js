@@ -73,8 +73,23 @@ const createAccount = asynchandler(async(req,res)=>{
         });
     }
 });
+//-----------------------------Deleting Account-----------------------------------------------------------
+const deletingAccount = asynchandler(async(req,res)=>{
+    try{
+        const id = req.params.id;
+        const accountDel = await accountHolderModel.findByIdAndDelete(id);
+        const transactionDel = await transactionModel.deleteMany({AccountNo:accountDel.AccountNo});
 
-//--------------------------------------------------
+        res.status(200).json({
+            message:"Account is deleted successfully."
+        });
+    }catch(error){
+        res.status(500).json({
+            error:"Server side error occurred!"
+        })
+    }
+});
+//--------------------------------------------------------------------------------------------------
 const allaccountholders = asynchandler(async(req,res)=>{
     try{
         const data = await accountHolderModel.find();
@@ -100,4 +115,4 @@ const singleAccountholder = asynchandler(async(req,res)=>{
     }
 });
 
-module.exports = {allaccountholders,createAccount,singleAccountholder};
+module.exports = {createAccount,allaccountholders,deletingAccount,singleAccountholder};

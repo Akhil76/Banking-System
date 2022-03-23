@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ALL_ACCOUNT_HOLDERS,CREATE_AC, SINGLE_ACCOUNT } from '../actionTypes/actionTypes';
+import { ALL_ACCOUNT_HOLDERS,CREATE_AC, DELACCOUNT,SINGLE_ACCOUNT } from '../actionTypes/actionTypes';
 
 export const createAccount = (accountformdata)=>(dispatch)=>{
     axios.post('/createaccount',accountformdata,{
@@ -13,6 +13,18 @@ export const createAccount = (accountformdata)=>(dispatch)=>{
             payload:{
                 accountHolder:Response.data
             }
+        })
+    })
+    .catch(error=>{
+        console.log(error)
+    })
+}
+export const deletingAccount = (id)=>(dispatch) =>{
+    axios.delete(`/deletingaccount/${id}`)
+    .then(Response=>{
+        dispatch({
+            type:DELACCOUNT,
+            payload:Response.data
         })
     })
     .catch(error=>{
