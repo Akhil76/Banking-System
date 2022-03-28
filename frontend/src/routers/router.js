@@ -17,12 +17,13 @@ import AccountSearchData from "../components/AccountManagerCom/AccountSearchData
 import Setting from "../pages/Setting";
 import Admin from "../pages/Admin";
 import Login from "../pages/Login";
+import PrivateRoute from "./PrivateRoute";
 
 function Router() {
     return (
         <Routes>
-            <Route path="/" element={<Admin/>}>
-                <Route path="" element={<Home/>}>
+            <Route path="/" element={<PrivateRoute><Admin/></PrivateRoute>}>
+                <Route path="/" element={<Home/>}>
                     <Route index element={<RecentDeposit />} />
                     <Route path="recentwithdraw" element={<RecentWithdraw />} />
                     <Route path="recenttransfer" element={<RecentTransfer />} />

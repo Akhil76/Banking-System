@@ -37,7 +37,7 @@ router.get("/transactionsbyid/:id",transactionById);
 router.get("/imagereader/:name",imageReader);
 
 router.post("/admincreate",adminCreate);
-router.get("/login",login);
+router.post("/login",login);
 
 
 module.exports = router;

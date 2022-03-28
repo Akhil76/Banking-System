@@ -1,5 +1,7 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {Box,TextField,Typography,Button,Grid } from '@mui/material';
+import {useDispatch} from 'react-redux';
+import {login} from '../statemanager/actions/auth';
 
 
 const customStyles = {
@@ -10,6 +12,15 @@ const customStyles = {
 }
 
 function Login(){
+    const dispatch = useDispatch();
+    const [adminInfo,setAdminInfo]= useState({
+        Username:"",
+        Password:""
+    });
+    const submitHandler=(e)=>{
+        e.preventDefault();
+        dispatch(login(adminInfo));
+    }
     return (
         <div>
             <Grid container>
@@ -26,15 +37,17 @@ function Login(){
                         variant="h6"
                         align="center"
                     >Admin Login</Typography>
-                    <form>
+                    <p>{adminInfo.Username}</p>
+                    <p>{adminInfo.Password}</p>
+                    <form onSubmit={submitHandler}>
                         <div style={{ marginBottom: "20px" }}>
                             <TextField
                                 fullWidth
                                 label="Username"
                                 variant="outlined"
                                 name="Username"
-                                // value={Username}
-                                // onChange={this.changeHandler}
+                                value={adminInfo.Username}
+                                onChange={(e)=>setAdminInfo({...adminInfo,Username:e.target.value})}
                             />
                         </div>
                         <div style={{ marginBottom: "20px" }}>
@@ -44,8 +57,8 @@ function Login(){
                                 label="Password"
                                 variant="outlined"
                                 name="Password"
-                                // value={Password}
-                                // onChange={this.changeHandler}
+                                value={adminInfo.Password}
+                                onChange={(e)=>setAdminInfo({...adminInfo,Password:e.target.value})}
                             />
                         </div>
                         <Button
