@@ -6,8 +6,22 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import {Provider} from 'react-redux';
 import store from './statemanager/store';
+import {LOGIN} from './statemanager/actionTypes/actionTypes';
+import setAuthHeader from './utils/setAuthHeader';
+import jwtDecode from 'jwt-decode';
 
+const token = localStorage.getItem('auth_token');
 
+if(token){ 
+  setAuthHeader(token); //---for sending token with every request by axios
+  const decode = jwtDecode(token);
+  store.dispatch({
+    type:LOGIN,
+    payload:{
+      admin: decode
+    }
+  })
+};
 
 ReactDOM.render(
   <React.StrictMode>
