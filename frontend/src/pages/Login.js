@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import {Box,TextField,Typography,Button,Grid } from '@mui/material';
 import {useDispatch} from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {login} from '../statemanager/actions/auth';
 
 
@@ -13,13 +14,14 @@ const customStyles = {
 
 function Login(){
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [adminInfo,setAdminInfo]= useState({
         Username:"",
         Password:""
     });
     const submitHandler=(e)=>{
         e.preventDefault();
-        dispatch(login(adminInfo));
+        dispatch(login(adminInfo,navigate));
     }
     return (
         <div>
@@ -37,8 +39,6 @@ function Login(){
                         variant="h6"
                         align="center"
                     >Admin Login</Typography>
-                    <p>{adminInfo.Username}</p>
-                    <p>{adminInfo.Password}</p>
                     <form onSubmit={submitHandler}>
                         <div style={{ marginBottom: "20px" }}>
                             <TextField

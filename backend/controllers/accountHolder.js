@@ -1,6 +1,11 @@
 const asynchandler = require('express-async-handler');
 const accountHolderModel = require('../models/accountHolder');
 const transactionModel = require('../models/transaction');
+const fs = require('fs');
+
+
+
+
 
 //----------Create Account--------------------------
 const createAccount = asynchandler(async(req,res)=>{
@@ -79,7 +84,21 @@ const deletingAccount = asynchandler(async(req,res)=>{
         const id = req.params.id;
         const accountDel = await accountHolderModel.findByIdAndDelete(id);
         const transactionDel = await transactionModel.deleteMany({AccountNo:accountDel.AccountNo});
-
+    //------file deleting function----------------
+       function delfile(filename){
+        const path = './uploadedFiles/';
+        const fileNameWithPath = path+filename;
+        if(filename){ //If there is no img file, fs.unlink will not work
+            fs.unlink(fileNameWithPath, (err) => {
+                console.log(err);
+              });
+        }
+       }
+    //--------------------------------------------
+       delfile(accountDel.Picture);
+       delfile(accountDel.Signature);
+       delfile(accountDel.NomineePicture);
+    //---------------------------
         res.status(200).json({
             message:"Account is deleted successfully."
         });

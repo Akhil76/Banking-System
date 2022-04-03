@@ -3,7 +3,8 @@ import jwtDecode from 'jwt-decode';
 import {LOGIN,LOGIN_ERROR} from '../actionTypes/actionTypes';
 import setAuthHeader from '../../utils/setAuthHeader';
 
-export const login =(admindata,history)=>dispatch=>{
+
+export const login =(admindata,navigate)=>dispatch=>{
     axios.post('/login',admindata)
     .then(res=>{
         const token = res.data.token;
@@ -16,8 +17,8 @@ export const login =(admindata,history)=>dispatch=>{
                 admin:decode, 
             }
         })
-        // history.push('/');
-        window.location.href="/";
+        navigate('/');
+        
     })
     .catch(error=>{
         dispatch({
@@ -30,10 +31,9 @@ export const login =(admindata,history)=>dispatch=>{
 }
 
 
-export const logout = history =>{
+export const logout = navigate =>{
     localStorage.removeItem('auth_token');
-    //history.push('/login')
-    window.location.href="/login";
+    navigate('/login')
     return{
         type:LOGIN,
         payload:{
