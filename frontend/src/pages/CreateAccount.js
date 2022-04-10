@@ -10,13 +10,14 @@ import {
     MenuItem,
     Button
 } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch ,useSelector} from 'react-redux';
 import { createAccount } from '../statemanager/actions/accountHoders';
 
 
 
 function CreateAccount() {
     const dispatch = useDispatch();
+    const message = useSelector((state)=>state.allAccountHoders.message); 
     const [accountInfo, setAccountInfo] = useState({
         FirstName: "",
         LastName: "",
@@ -72,8 +73,9 @@ function CreateAccount() {
                 variant="h6"
                 style={{ background: "#81d4fa", padding: "10px" }}
             >
-                CreateAccount
+                Create Account
             </Typography>
+            <Typography>{message.message}</Typography>
             <Paper style={{ padding: "15px" }}>
                 <p>{accountInfo.AccountType}{accountInfo.Birthdate}</p>
                 <form onSubmit={submitHandler}>

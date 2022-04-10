@@ -6,7 +6,7 @@ import Spinner from '../../components/Spinner';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { singleAccount } from '../../statemanager/actions/accountHoders';
-//import dest from '../../../../backend/uploadedFiles'
+
 
 const useStyles = makeStyles({
     root: {
@@ -22,7 +22,6 @@ const useStyles = makeStyles({
     tranOperation: {
         display: "flex",
         flexWrap: "wrap",
-        //justifyContent: "space-between",
         marginTop: "5px",
         padding: "10px"
     }

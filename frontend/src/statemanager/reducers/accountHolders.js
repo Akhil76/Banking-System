@@ -3,6 +3,7 @@ import {ALL_ACCOUNT_HOLDERS,CREATE_AC, DELACCOUNT, SINGLE_ACCOUNT} from '../acti
 const initialstate = {
     accountHolders:[],
     accountHolder:[],// Single accountholder only
+    message:{},
     loading:true
 }
 
@@ -17,7 +18,7 @@ const accountHolders = (state=initialstate,action)=>{
         case CREATE_AC:
             return{
                 ...state,
-                accountHolder:action.payload
+                message:action.payload.message
             }
         case DELACCOUNT:
             return{

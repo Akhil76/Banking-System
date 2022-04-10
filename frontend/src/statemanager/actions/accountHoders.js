@@ -11,7 +11,7 @@ export const createAccount = (accountformdata)=>(dispatch)=>{
         dispatch({
             type:CREATE_AC,
             payload:{
-                accountHolder:Response.data
+                message:Response.data
             }
         })
     })

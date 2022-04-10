@@ -11,6 +11,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { maketransaction } from '../../statemanager/actions/transaction';
 
 
+
+
+
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
     return (
@@ -51,7 +54,6 @@ export default function TransactionOperation(props) {
     //----------------------------------------------------------------------------------------------------
     const dispatch = useDispatch();
     const message = useSelector((state) => state.transaction.message);
-
 
     const [depositData, setDepositData] = useState({
         id: props.id,
@@ -97,6 +99,7 @@ export default function TransactionOperation(props) {
     }
     //--------------------------------------------------------------------------------------------------------------
     const [open, setOpen] = React.useState(true);// for opening successful message snackbar
+
     return (
 
         <Box sx={{ width: '70%' }}>

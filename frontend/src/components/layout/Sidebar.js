@@ -14,12 +14,12 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
   link: {
-    color: "black",
+    color: "white",
     textDecoration: "none",
     fontSize: "16px"
   },
   icon: {
-    color: "black",
+    color: "white",
     marginRight: "-20px"
   },
   text: {
@@ -96,7 +96,7 @@ function Sidebar(props) {
         variant="permanent"
         sx={{
           display: { xs: 'none', sm: 'block' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth,backgroundColor: "lightslategrey"},
         }}
         open
       >
