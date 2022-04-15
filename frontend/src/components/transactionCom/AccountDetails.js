@@ -6,7 +6,7 @@ import Spinner from '../../components/Spinner';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { singleAccount } from '../../statemanager/actions/accountHoders';
-
+import {maketransaction} from '../../statemanager/actions/transaction';
 
 const useStyles = makeStyles({
     root: {
@@ -34,11 +34,13 @@ function AccountDetails() {
     const dispatch = useDispatch();
     const accountHolder = useSelector((state) => state.allAccountHoders.accountHolder);
     const loading = useSelector((state) => state.allAccountHoders.loading);
+    const tranData = useSelector((state)=>state.transaction.message.transactionData)
 
     useEffect(() => {
         dispatch(singleAccount(params.accountNo))
-    }, [params.accountNo]);
+    }, [params.accountNo,tranData]);
 
+    
 
     return (
         <Grid>

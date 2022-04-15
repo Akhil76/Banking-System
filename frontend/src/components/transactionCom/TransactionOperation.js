@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { TextField, Button } from '@mui/material';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -54,7 +54,7 @@ export default function TransactionOperation(props) {
     //----------------------------------------------------------------------------------------------------
     const dispatch = useDispatch();
     const message = useSelector((state) => state.transaction.message);
-
+    
     const [depositData, setDepositData] = useState({
         id: props.id,
         Name: props.Name,
@@ -62,7 +62,7 @@ export default function TransactionOperation(props) {
         TransactionType: "Deposit",
         Deposit: ""
     })
-
+ 
     const [withdrawData, setWithdrawData] = useState({
         id: props.id,
         Name: props.Name,
@@ -73,25 +73,45 @@ export default function TransactionOperation(props) {
     const [transferData, setTransferData] = useState({
         id: props.id,
         Name: props.Name,
-        AccountNo: props.AccountNo,
+        AccountNo: props.AccountNo, 
         TransactionType: "Transfer",
         TransferingAccountNo: "",
         Transfer: ""
     })
+    console.log(depositData);
+    console.log(props.id,props.Name);
     const DepositHandler = (e) => {
         e.preventDefault();
         dispatch(maketransaction(depositData));
-        setDepositData({ Deposit: "" });
+        setDepositData({ 
+            id:props.id,
+            Name:props.Name,
+            AccountNo:props.AccountNo,
+            TransactionType:"Deposit",
+            Deposit: "" 
+        });
+        //id,Name,AccontNo,TransactionType were getting empty during 2nd time event fire 
     }
+   
     const WithdrawHandler = (e) => {
         e.preventDefault();
         dispatch(maketransaction(withdrawData));
-        setWithdrawData({ Withdraw: "" });
+        setWithdrawData({ 
+            id: props.id,
+            Name: props.Name,
+            AccountNo: props.AccountNo,
+            TransactionType: "Withdraw",
+            Withdraw: "" 
+        });
     }
     const TransferHandler = (e) => {
         e.preventDefault();
         dispatch(maketransaction(transferData));
         setTransferData({
+            id: props.id,
+            Name: props.Name,
+            AccountNo: props.AccountNo, 
+            TransactionType: "Transfer",
             TransferingAccountNo: "",
             Transfer: ""
 
@@ -126,6 +146,8 @@ export default function TransactionOperation(props) {
             <TabPanel value={value} index={0}>
                 <form onSubmit={DepositHandler}>
                     <label>Deposit Amount:</label>
+                    <p>{props.id}</p>
+                    <p>{props.Name}</p>
                     <TextField
                         fullWidth
                         type="text"

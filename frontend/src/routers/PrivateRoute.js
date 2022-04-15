@@ -1,7 +1,7 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import {Navigate} from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import {login} from '../statemanager/actions/auth';
+//import {login} from '../statemanager/actions/auth';
 
 
 
@@ -17,9 +17,7 @@ function PrivateRoute({children}) {
   }else{
     expTime = false;
   }
-   //---------------------------------------------
-
-   //const authenticated = true;
+  
     return expTime && authenticated ? children : <Navigate to="/login"/>;
   }
 
