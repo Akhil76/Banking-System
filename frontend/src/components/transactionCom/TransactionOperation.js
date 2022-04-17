@@ -55,6 +55,7 @@ export default function TransactionOperation(props) {
     const dispatch = useDispatch();
     const message = useSelector((state) => state.transaction.message);
     
+    
     const [depositData, setDepositData] = useState({
         id: props.id,
         Name: props.Name,
@@ -62,7 +63,8 @@ export default function TransactionOperation(props) {
         TransactionType: "Deposit",
         Deposit: ""
     })
- 
+   
+
     const [withdrawData, setWithdrawData] = useState({
         id: props.id,
         Name: props.Name,
@@ -78,8 +80,7 @@ export default function TransactionOperation(props) {
         TransferingAccountNo: "",
         Transfer: ""
     })
-    console.log(depositData);
-    console.log(props.id,props.Name);
+    
     const DepositHandler = (e) => {
         e.preventDefault();
         dispatch(maketransaction(depositData));
@@ -92,7 +93,7 @@ export default function TransactionOperation(props) {
         });
         //id,Name,AccontNo,TransactionType were getting empty during 2nd time event fire 
     }
-   
+  
     const WithdrawHandler = (e) => {
         e.preventDefault();
         dispatch(maketransaction(withdrawData));
@@ -117,15 +118,24 @@ export default function TransactionOperation(props) {
 
         });
     }
+
+    //---------------------------for message------------------------------------------------------
+    const tranData = useSelector((state)=>state.transaction.message.transactionData);
+    const [msg,setMsg] = useState(null);
+    useEffect(()=>{
+        setMsg(message.message);
+        setTimeout(()=>setMsg(null),1000);
+    },[tranData]);
+    
     //--------------------------------------------------------------------------------------------------------------
     const [open, setOpen] = React.useState(true);// for opening successful message snackbar
-
+    
     return (
 
         <Box sx={{ width: '70%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                {
-               message.message &&
+               msg && 
                <Snackbar
                     open={open}
                     autoHideDuration={6000}
@@ -133,10 +143,11 @@ export default function TransactionOperation(props) {
                     anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
                 >
                     <Alert severity="success" sx={{ width: '100%' }}>
-                        {message.message}
+                        {msg}
                     </Alert>
                 </Snackbar>
                 }
+                
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab style={{ textTransform: "none" }} label="Deposit" {...a11yProps(0)} />
                     <Tab label="Withdraw" {...a11yProps(1)} />
@@ -146,8 +157,6 @@ export default function TransactionOperation(props) {
             <TabPanel value={value} index={0}>
                 <form onSubmit={DepositHandler}>
                     <label>Deposit Amount:</label>
-                    <p>{props.id}</p>
-                    <p>{props.Name}</p>
                     <TextField
                         fullWidth
                         type="text"

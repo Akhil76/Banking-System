@@ -34,7 +34,7 @@ function AccountDetails() {
     const dispatch = useDispatch();
     const accountHolder = useSelector((state) => state.allAccountHoders.accountHolder);
     const loading = useSelector((state) => state.allAccountHoders.loading);
-    const tranData = useSelector((state)=>state.transaction.message.transactionData)
+    const tranData = useSelector((state)=>state.transaction.message.transactionData);
 
     useEffect(() => {
         dispatch(singleAccount(params.accountNo))

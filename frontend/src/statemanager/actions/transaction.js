@@ -31,7 +31,6 @@ export const alltransactions = () =>(dispatch)=>{
     .catch(error=>{
         console.log(error)
     })
-
 }
 
 export const transactionByType = (type) =>(dispatch)=>{
