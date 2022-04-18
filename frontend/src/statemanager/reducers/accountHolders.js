@@ -1,9 +1,10 @@
-import {ALL_ACCOUNT_HOLDERS,CREATE_AC, DELACCOUNT, SINGLE_ACCOUNT} from '../actionTypes/actionTypes';
+import {ALL_ACCOUNT_HOLDERS,CREATE_AC, DELACCOUNT, SINGLE_ACCOUNT,ERROR} from '../actionTypes/actionTypes';
 
 const initialstate = {
     accountHolders:[],
     accountHolder:[],// Single accountholder only
     message:{},
+    error:{},
     loading:true
 }
 
@@ -18,7 +19,13 @@ const accountHolders = (state=initialstate,action)=>{
         case CREATE_AC:
             return{
                 ...state,
-                message:action.payload.message
+                message:action.payload.message,
+                error:{}
+            }
+        case ERROR:
+            return{
+                ...state,
+                error:action.payload.error
             }
         case DELACCOUNT:
             return{

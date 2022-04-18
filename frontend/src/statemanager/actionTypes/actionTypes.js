@@ -1,4 +1,5 @@
 export const ALL_ACCOUNT_HOLDERS = 'ALL_ACCOUNT_HOLDERS';
+export const ERROR = 'ERROR';
 export const CREATE_AC = 'CREATE_AC';
 export const DELACCOUNT = 'DELACCOUNT';
 export const SINGLE_ACCOUNT = 'SINGLE_ACCOUNT';

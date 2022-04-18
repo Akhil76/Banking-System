@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ALL_ACCOUNT_HOLDERS,CREATE_AC, DELACCOUNT,SINGLE_ACCOUNT } from '../actionTypes/actionTypes';
+import { ALL_ACCOUNT_HOLDERS,CREATE_AC, DELACCOUNT,SINGLE_ACCOUNT,ERROR } from '../actionTypes/actionTypes';
 
 export const createAccount = (accountformdata)=>(dispatch)=>{
     axios.post('/createaccount',accountformdata,{
@@ -7,16 +7,21 @@ export const createAccount = (accountformdata)=>(dispatch)=>{
             "content-type":"application/json"
         }
     })
-    .then(Response =>{
+    .then(response =>{
         dispatch({
             type:CREATE_AC,
             payload:{
-                message:Response.data
+                message:response.data
             }
         })
     })
     .catch(error=>{
-        console.log(error)
+        dispatch({
+            type:ERROR,
+            payload:{
+                error:error.response.data
+            }
+        })
     })
 }
 export const deletingAccount = (id)=>(dispatch) =>{

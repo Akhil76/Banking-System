@@ -17,7 +17,8 @@ import { createAccount } from '../statemanager/actions/accountHoders';
 
 function CreateAccount() {
     const dispatch = useDispatch();
-    const message = useSelector((state)=>state.allAccountHoders.message); 
+    const message = useSelector((state)=>state.allAccountHoders.message);
+    const error = useSelector((state)=>state.allAccountHoders.error); 
     const [accountInfo, setAccountInfo] = useState({
         FirstName: "",
         LastName: "",
@@ -76,8 +77,8 @@ function CreateAccount() {
                 Create Account
             </Typography>
             <Typography>{message.message}</Typography>
+            <p>{error.FirstName}</p>
             <Paper style={{ padding: "15px" }}>
-                <p>{accountInfo.AccountType}{accountInfo.Birthdate}</p>
                 <form onSubmit={submitHandler}>
                     <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
                         <div style={{ width: "48%" }}>
@@ -85,6 +86,8 @@ function CreateAccount() {
                                 First Name
                             </InputLabel>
                             <TextField
+                                error={error.FirstName}
+                                helperText={error.FirstName}
                                 fullWidth
                                 placeholder="First Name"
                                 id="outlined-size-small"
@@ -100,6 +103,8 @@ function CreateAccount() {
                                 Last Name
                             </InputLabel>
                             <TextField
+                                error={error.LastName}
+                                helperText={error.LastName}
                                 fullWidth
                                 placeholder="Last Name"
                                 id="outlined-size-small"
@@ -118,6 +123,8 @@ function CreateAccount() {
                                 Full Name
                             </InputLabel>
                             <TextField
+                                error={error.FullName}
+                                helperText={error.FullName}
                                 fullWidth
                                 placeholder="Full Name"
                                 id="outlined-size-small"
@@ -134,6 +141,8 @@ function CreateAccount() {
                                 Email
                             </InputLabel>
                             <TextField
+                                error={error.Email}
+                                helperText={error.Email}
                                 fullWidth
                                 placeholder="Email"
                                 id="outlined-size-small"
@@ -152,6 +161,8 @@ function CreateAccount() {
                                 Address
                             </InputLabel>
                             <TextField
+                                error={error.Address}
+                                helperText={error.Address}
                                 fullWidth
                                 placeholder="Address"
                                 id="outlined-size-small"
@@ -168,6 +179,8 @@ function CreateAccount() {
                                 Mobile No
                             </InputLabel>
                             <TextField
+                                error={error.Mobile}
+                                helperText={error.Mobile}
                                 type="number"
                                 fullWidth
                                 placeholder=" Mobile No"
@@ -184,6 +197,8 @@ function CreateAccount() {
                             Date of Birth
                         </InputLabel>
                         <TextField
+                            error={error.Birthdate}
+                            helperText={error.Birthdate}
                             type="date"
                             size="small"
                             Name="Birthdate"
@@ -212,6 +227,8 @@ function CreateAccount() {
                             Primary Amount
                         </InputLabel>
                         <TextField
+                            error={error.PrimaryAmount}
+                            helperText={error.PrimaryAmount}
                             type="number"
                             placeholder=" Primary Amount"
                             id="outlined-size-small"
@@ -251,6 +268,8 @@ function CreateAccount() {
                             Nominee Name
                         </InputLabel>
                         <TextField
+                            error={error.Nominee}
+                            helperText={error.Nominee}
                             placeholder="Nominee Name"
                             id="outlined-size-small"
                             defaultValue=""
