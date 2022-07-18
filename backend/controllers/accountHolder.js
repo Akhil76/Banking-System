@@ -3,7 +3,7 @@ const AccountHolderValidator = require('../validators/AccountHolderValidator');
 const accountHolderModel = require('../models/accountHolder');
 const transactionModel = require('../models/transaction');
 const fs = require('fs');
-
+const upload = require('../middlewares/upload');
 
 
 
@@ -11,6 +11,7 @@ const fs = require('fs');
 //----------Create Account--------------------------
 const createAccount = asynchandler(async (req, res) => {
     try {
+       
         const {
             FirstName,
             LastName,
@@ -24,9 +25,41 @@ const createAccount = asynchandler(async (req, res) => {
             Nominee,
         } = req.body;
         //--------------------------------file uploading item-----------------------------------------------------
-        const Picture = req.files.Picture[0].filename; // multiple file upload using fields
-        const Signature = req.files.Signature[0].filename;
-        const NomineePicture = req.files.NomineePicture[0].filename;
+        //var  {Signature,NomineePicture} = req.files; 
+       // multiple file upload using fields
+        // console.log(req.files)
+        // const Picture = req.files.Picture[0].filename; 
+        // const Signature = req.files.Signature[0].filename;
+        // const NomineePicture = req.files.NomineePicture[0].filename;
+       
+        //const Signature = req.files.Signature;
+        //const NomineePicture = req.files.NomineePicture;
+        // if(req.files = {}){
+        //     const Picture = "";
+        //     const Signature = "";
+        //     const NomineePicture = "";
+        // }else{
+        //     const Picture = req.files.Picture[0].filename;
+        //     const Signature = req.files.Signature[0].filename;
+        //     const NomineePicture = req.files.NomineePicture[0].filename;
+        // }
+       var Picture = "";
+       var Signature = "";
+       var NomineePicture = "";
+
+        if(req.files.Picture){
+            Picture = req.files.Picture[0].filename;
+        }
+        if(req.files.Signature){
+            Signature = req.files.Signature[0].filename;
+        }
+        if(req.files.NomineePicture){
+            NomineePicture = req.files.NomineePicture[0].filename;
+        }
+        console.log(Picture);
+        
+    
+        
         //--------------------------------------------------------------------------------------------------------       
         const validate = AccountHolderValidator({
             FirstName,
@@ -47,8 +80,9 @@ const createAccount = asynchandler(async (req, res) => {
         if (!validate.isValid) {
             res.status(400).json(validate.error);
         } else {
-            const email = await accountHolderModel.findOne({ Email });
-            if (email) {
+            const email = await accountHolderModel.findOne({Email});
+            
+            if (email){
                 return res.status(400).json({
                     Email: 'Email alreay exists!'
                 })
@@ -103,9 +137,10 @@ const createAccount = asynchandler(async (req, res) => {
             //-------------------------------------------------------------------------------------------------------
         }
 
-    } catch (error) {
-        res.status(500).json({
-            error: "Server side error occurred and account is not created!"
+    }catch(error) {
+       console.log(error)
+        res.status(200).json({
+            message: "Server side error occurred and account is not created!"
         });
     }
 });

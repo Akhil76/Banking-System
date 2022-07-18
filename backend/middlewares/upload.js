@@ -1,12 +1,6 @@
 const multer = require('multer');
 const path   = require('path');
 
-// const UPLOAD_FOLDER = '../frontend/public/uploads';
-
-// const upload = multer({
-//     dest : UPLOAD_FOLDER 
-// })
-
 
 var storage = multer.diskStorage({
     destination: function(req,file,cb){

@@ -12,7 +12,7 @@ const validate = accountHolder =>{
         error.LastName = 'Last Name field is empty!'
     }
     if(!accountHolder.FullName){
-        error.accountHolder = 'Full Name field is empty!'
+        error.FullName = 'Full Name field is empty!'
     }
     if(!accountHolder.Email){
         error.Email = 'Please,enter your email.'
@@ -29,7 +29,7 @@ const validate = accountHolder =>{
         error.Birthdate = 'Date of birth field is empty!'
     }
     if(!accountHolder.AccountType){
-        error.AccountType = 'Account type field is empty!'
+        error.AccountType = 'Account type is not selected!'
     }
     if(!accountHolder.PrimaryAmount){
         error.PrimaryAmount = 'Primary amount field is empty!'

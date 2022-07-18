@@ -25,17 +25,15 @@ router.get("/singleaccountholder/:id",auth,singleAccountholder);
 router.post("/createaccount",auth,upload.fields([
     {name:"Picture",maxCount:1},
     {name:"Signature",maxCount:1},
-    {name:"NomineePicture",maxCount:1}
+    {name:"NomineePicture", maxCount:1}
 ]),createAccount);
 
 router.delete("/deletingaccount/:id",auth,deletingAccount);
-
 router.post("/transaction",auth,createtransaction);
 router.get("/alltransactions",auth,alltransactions);
 router.get("/transactionsbytype/:type",auth,transactionByType);
 router.get("/transactionsbyid/:id",auth,transactionById);
 router.get("/imagereader/:name",imageReader);
-
 router.post("/admincreate",adminCreate);
 router.post("/login",login);
 

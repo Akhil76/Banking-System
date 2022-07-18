@@ -50,22 +50,24 @@ function CreateAccount() {
         accountformdata.append("Signature", accountInfo.Signature);
         accountformdata.append("Nominee", accountInfo.Nominee);
         accountformdata.append("NomineePicture", accountInfo.NomineePicture);
+        
         dispatch(createAccount(accountformdata));
-        setAccountInfo({
-            FirstName: "",
-            LastName: "",
-            FullName: "",
-            Email: "",
-            Address: "",
-            Mobile: "",
-            Birthdate: "",
-            AccountType: "",
-            PrimaryAmount: "",
-            Picture: "",
-            Signature: "",
-            Nominee: "",
-            NomineePicture: ""
-        })
+        
+        // setAccountInfo({
+        //     FirstName: "",
+        //     LastName: "",
+        //     FullName: "",
+        //     Email: "",
+        //     Address: "",
+        //     Mobile: "",
+        //     Birthdate: "",
+        //     AccountType: "",
+        //     PrimaryAmount: "",
+        //     Picture: "",
+        //     Signature: "",
+        //     Nominee: "",
+        //     NomineePicture: ""
+        // })
     }
     return (
         <Grid>
@@ -77,7 +79,6 @@ function CreateAccount() {
                 Create Account
             </Typography>
             <Typography>{message.message}</Typography>
-            <p>{error.FirstName}</p>
             <Paper style={{ padding: "15px" }}>
                 <form onSubmit={submitHandler}>
                     <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
@@ -211,6 +212,8 @@ function CreateAccount() {
                             Account Type
                         </InputLabel>
                         <Select
+                            error={error.AccountType}
+                            lebel={error.AccountType}
                             value={accountInfo.AccountType}
                             onChange={(e) => setAccountInfo({ ...accountInfo, AccountType: e.target.value })}
                             displayEmpty
@@ -221,6 +224,7 @@ function CreateAccount() {
                             <MenuItem value="Saving">Saving</MenuItem>
                             <MenuItem value="Current">Current</MenuItem>
                         </Select>
+                        <InputLabel style={{color:"red",fontSize:"small",fontWeight:"initial"}}>{error.AccountType}</InputLabel>
                     </div>
                     <div>
                         <InputLabel>
@@ -240,10 +244,13 @@ function CreateAccount() {
                         />
                     </div>
                     <div>
+                        <Typography style={{color:"green"}}>Picture must be under 2 mega byte in size.</Typography>
                         <InputLabel>
                             Account Holder's Picture
                         </InputLabel>
                         <TextField
+                            error={error.Picture}
+                            helperText={error.Picture}
                             type="file"
                             id="outlined-size-small"
                             size="small"
@@ -256,6 +263,8 @@ function CreateAccount() {
                             Signature Verification Image
                         </InputLabel>
                         <TextField
+                            error={error.Signature}
+                            helperText={error.Signature}
                             type="file"
                             id="outlined-size-small"
                             size="small"
@@ -283,6 +292,8 @@ function CreateAccount() {
                             Nominee's Picture
                         </InputLabel>
                         <TextField
+                            error={error.NomineePicture}
+                            helperText={error.NomineePicture}
                             type="file"
                             id="outlined-size-small"
                             size="small"
