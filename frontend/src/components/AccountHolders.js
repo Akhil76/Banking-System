@@ -41,7 +41,7 @@ function AccountHolders() {
 
     useEffect(() => {
         dispatch(allAccountHolders());
-    }, [dispatch,accountHolders]);
+    }, [dispatch]);
 
     return (
         <Grid item xs={12} sm={12} md={12}>
