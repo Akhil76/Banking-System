@@ -16,8 +16,8 @@ require('./middlewares/passport')(passport);
 app.use('/',routers);
 
 PORT = process.env.PORT;
-
-Db_url = `mongodb+srv://${process.env.User}:${process.env.Password}@bank.klnpa.mongodb.net/${process.env.DbName}?retryWrites=true&w=majority`;
+Db_url =`mongodb+srv://${process.env.User}:${process.env.Password}@bank.klnpa.mongodb.net/${process.env.DbName}?retryWrites=true&w=majority`
+// Db_url = `mongodb+srv://${process.env.User}:${process.env.Password}@bank.klnpa.mongodb.net/${process.env.DbName}?retryWrites=true&w=majority`;
 app.listen(PORT,()=>{
     console.log(`Server is running on PORT ${PORT}`);
     mongoose.connect(Db_url,{
@@ -28,8 +28,9 @@ app.listen(PORT,()=>{
     .then(()=>{
         console.log('Database is connected..');
     })
-    .catch(()=>{
+    .catch((error)=>{
         console.log('Database is not connected!'); 
+        console.log(error)
     })
 
 });
